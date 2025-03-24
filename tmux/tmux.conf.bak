@@ -1,0 +1,102 @@
+# Plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# NOTE: Import pywal16 colors
+. "${HOME}/.cache/wal/colors.sh"
+
+# NOTE: Trying my own configuration
+
+# Enable status bar
+set -g status-style "bg=#1e1e2e fg=#cdd6f4"
+
+# Left Side: Session Name (Spaced Layout)
+set -g status-left-length 100
+set -g status-left " \
+#[fg=#89b4fa]#[bg=#89b4fa,fg=#1e1e2e] #S #[fg=#89b4fa,bg=#1e1e2e] \
+ "
+
+# Right side (Battery, Date, Time) - Each one is wrapped with separators
+set -g status-right "#[fg=#f9e2af,bg=#1e1e2e]#[bg=#f9e2af,fg=#1e1e2e] #(cat /sys/class/power_supply/BAT0/capacity)% #[fg=#f9e2af,bg=#1e1e2e]\
+ #[fg=#89b4fa,bg=#1e1e2e]#[bg=#89b4fa,fg=#1e1e2e] %Y-%m-%d #[fg=#89b4fa,bg=#1e1e2e]\
+ #[fg=#a6e3a1,bg=#1e1e2e]#[bg=#a6e3a1,fg=#1e1e2e] %H:%M #[fg=#a6e3a1,bg=#1e1e2e]"
+
+# Window List Styling (Uses Rounded Separators)
+setw -g window-status-format " \
+#[fg=#7f849c]#[bg=#7f849c,fg=#1e1e2e] #I:#W #[fg=#7f849c,bg=#1e1e2e] \
+"
+setw -g window-status-current-format " \
+#[fg=#89b4fa]#[bg=#89b4fa,fg=#1e1e2e] #I:#W #[fg=#89b4fa,bg=#1e1e2e] \
+"
+setw -g window-status-style "bg=#1e1e2e,fg=#7f849c"
+setw -g window-status-current-style "bg=#1e1e2e,fg=#89b4fa"
+
+# NOTE: Test end
+
+
+### NOTE: It pretty much works !! ###
+# # Status bar settings
+# set -g status-style "bg=#1e1e2e fg=#cdd6f4"
+#
+# # Left side (session name)
+# set -g status-left-length 100
+# set -g status-left "#[fg=#89b4fa]#[bg=#89b4fa,fg=#1e1e2e] #S #[fg=#89b4fa,bg=#1e1e2e]"
+#
+# # Right side (Battery, Date, Time) - Each one is wrapped with separators
+# set -g status-right "#[fg=#f9e2af,bg=#1e1e2e]#[bg=#f9e2af,fg=#1e1e2e] #(cat /sys/class/power_supply/BAT0/capacity)% #[fg=#f9e2af,bg=#1e1e2e]\
+#  #[fg=#89b4fa,bg=#1e1e2e]#[bg=#89b4fa,fg=#1e1e2e] %Y-%m-%d #[fg=#89b4fa,bg=#1e1e2e]\
+#  #[fg=#a6e3a1,bg=#1e1e2e]#[bg=#a6e3a1,fg=#1e1e2e] %H:%M #[fg=#a6e3a1,bg=#1e1e2e]"
+#
+# # Window list styling (also uses rounded separators)
+# setw -g window-status-format " #[fg=#7f849c]#[bg=#7f849c,fg=#1e1e2e] #I:#W #[fg=#7f849c,bg=#1e1e2e] "
+# setw -g window-status-current-format " #[fg=#89b4fa]#[bg=#89b4fa,fg=#1e1e2e] #I:#W #[fg=#89b4fa,bg=#1e1e2e] "
+# setw -g window-status-style "bg=#1e1e2e,fg=#7f849c"
+# setw -g window-status-current-style "bg=#1e1e2e,fg=#89b4fa"
+# Enable 256 colors and true-colors
+
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",*256col*:Tc"
+
+# General
+set -g set-clipboard on
+set -g mouse on
+set -g status-interval 3
+set -g detach-on-destroy off
+set-option -g status-position top
+set -g history-limit 1000000
+
+# Prefix key
+unbind C-b
+set -g prefix M-Space
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+set -g pane-base-index 1
+set-window-option -g pane-base-index 1
+set-option -g renumber-windows on
+
+# Splitting panes with 'i' and 'o'
+unbind %
+bind i split-window -h -c "#{pane_current_path}"
+
+unbind \"
+bind o split-window -v -c "#{pane_current_path}"
+
+# Open new windows in the same path
+bind c new-window -c "#{pane_current_path}"
+
+# Use vim keys to navigate panes
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key h select-pane -L
+bind-key l select-pane -R
+
+# Use alt + vim keys to resize
+bind -r M-j resize-pane -D 5
+bind -r M-k resize-pane -U 5
+bind -r M-l resize-pane -R 5
+bind -r M-h resize-pane -L 5
+bind -r M resize-pane -Z 5 # Use 'm' to maximize a pane
+
+# Initialize TPM (Tmux Plugin Manager), (keep this part at the bottom)
+run '~/.tmux/plugins/tpm/tpm'
