@@ -1,0 +1,151 @@
+/* Import pywal16 colors */
+ @import '/home/theophile/.cache/wal/colors-waybar.css'; 
+
+/* Global styles */
+* {
+  border: none;
+  border-radius: 10px;
+  font-family: "JetbrainsMono Nerd Font";
+  font-size: 12px;
+  min-height: 10px;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+#clock,
+#network,
+#bluetooth,
+#pulseaudio,
+#battery {
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 0px;
+  border-radius: 30px;
+  background: @color1;
+  color: @color7;
+  transition: 0.3s;
+}
+
+tooltip {
+  background-color: @color1;
+  border-radius: 10px;
+}
+
+tooltip label {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Clock */
+#clock {
+  transition: 0.3s;
+}
+
+#clock:hover {
+  background: @color2;
+}
+
+/* Workspaces */
+#workspaces {
+  margin-top: 6px;
+  padding-right: 1px;
+  padding-left: 1px;
+  border-radius: 30px;
+  background: @color5;
+  transition: 0.3s;
+}
+
+#workspaces button {
+  margin: 2px;
+  border-radius: 15px;
+  border: 0px;
+  color: @foreground;
+  border-radius: 50px;
+  background: @color5;
+  transition: 0.3s;
+}
+
+#workspaces button.active {
+  color: @foreground;
+  background: @color1;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+#workspaces button:hover {
+  background: @color2;
+  color: @color7;
+}
+
+/* Network */
+#network {
+  transition: 0.3s;
+}
+
+#network:hover {
+  background: @color2;
+}
+
+#network.disconnected {
+  color: @color7;
+  transition: 0.3s;
+  background: @color1;
+}
+
+#network.disconnected:hover {
+  background: @color1;
+}
+
+/* Bluetooth */
+#bluetooth {
+  transition: 0.3s;
+}
+
+#bluetooth:hover {
+  background: @color2;
+}
+
+#bluetooth.disconnected {
+  color: @color7;
+  transition: 0.3s;
+  background: @color1;
+}
+
+#bluetooth.disconnected:hover {
+  background: @color1;
+}
+
+/* Pulseaudio */
+#pulseaudio {
+  transition: 0.3s;
+}
+
+#pulseaudio:hover {
+  background: @color2;
+}
+
+#pulseaudio.muted {
+  color: @color7;
+  background: @color1;
+  transition: 0.3s;
+}
+
+#pulseaudio.muted:hover {
+  background: @color1;
+}
+
+/* Battery */
+#battery {
+  margin-right: 12px;
+}
+
+#battery:hover {
+  background: @color2;
+}
