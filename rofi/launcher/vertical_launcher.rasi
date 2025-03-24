@@ -1,0 +1,115 @@
+// Import colors from pywal16
+@import "~/.cache/wal/colors-rofi-dark"
+
+configuration {
+	modi:					"drun,filebrowser,window";
+    show-icons: 			true;
+	drun-display-format: 	"{name}";
+	window-format: 			"{w} · {c} · {t}";
+}
+
+* {
+    font: 					"CaskaydiaCove Nerd Font Mono 14";
+}
+
+window {
+    transparency: 			"real";
+    location: 				center;
+    anchor: 				center;
+    fullscreen: 			false;
+	height:					700px;
+    width: 					450px;
+    x-offset: 				0px;
+    y-offset: 				0px;
+	padding: 				0px;
+
+    enabled: 				true;
+    border-radius: 			20px;
+    cursor: 				"default";
+}
+
+mainbox {
+	enabled: 				true;
+    spacing: 				0px;
+    background-color: 		transparent;
+    orientation: 			vertical;
+    children: 				[ "inputbar", "listbox" ];
+}
+
+listbox {
+    spacing: 				20px;
+    padding: 				20px;
+    background-color: 		transparent;
+    orientation: 			vertical;
+    children: 				[ "message", "listview" ];
+}
+
+inputbar {
+    spacing: 				10px;
+    padding: 90px 			70px;
+    background-color: 		transparent;
+
+	// Use the cached current wallpaper's icon
+    background-image: 		url("~/.cache/current_wallpaper/current-icon.jpg", width);
+    orientation: 			horizontal;
+    children: 				[ "entry" ];
+}
+
+entry {
+    enabled: 				true;
+    expand: 				false;
+    width: 					300px;
+    padding: 				12px 16px;
+    border-radius: 			10px;
+    text-color: 			inherit;
+    cursor: 				text;
+    placeholder: 			"Search";
+    placeholder-color: 		inherit;
+}
+
+listview {
+    enabled: 				true;
+    columns: 				1;
+    lines: 					7;
+    cycle: 					true;
+    dynamic: 				true;
+    scrollbar: 				false;
+    layout: 				vertical;
+    reverse: 				false;
+    fixed-height: 			true;
+    fixed-columns: 			true;
+    
+    spacing: 				10px;
+    background-color: 		transparent;
+    text-color: 			@foreground;
+    cursor: 				"default";
+}
+
+element {
+	enabled: 				true;
+    spacing: 				10px;
+    padding: 				8px;
+    border-radius: 			10px;
+    background-color: 		transparent;
+    cursor: 				pointer;
+}
+
+element normal.normal {
+    background-color: 		inherit;
+    text-color: 			inherit;
+}
+
+element-icon {
+    background-color: 		transparent;
+    text-color: 			inherit;
+    size: 					32px;
+    cursor: 				inherit;
+}
+
+element-text {
+    background-color: 		transparent;
+    text-color: 			inherit;
+    cursor: 				inherit;
+    vertical-align: 		0.5;
+    horizontal-align: 		0.0;
+}

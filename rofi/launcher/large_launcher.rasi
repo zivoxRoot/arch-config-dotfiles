@@ -1,0 +1,111 @@
+// Import colors from pywal16
+@import "~/.cache/wal/colors-rofi-dark"
+
+configuration {
+    modi:                       "drun,run,filebrowser,window";
+    show-icons:                 true;
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
+}
+
+* {
+	font:						"CaskaydiaCove Nerd Font Mono 14";
+}
+
+window {
+    fullscreen:                 false;
+    cursor:                     "default";
+    background-color:           black / 12%;
+    location:                   center;
+    anchor:                     center;
+    border-radius:              15px;
+    width:                      1000px;
+	padding:					0px;
+}
+
+mainbox {
+    children:                   [ "img", "listbox"];
+    orientation:                horizontal;
+    padding:                    0px;
+    spacing:                    24px;
+}
+
+img {
+    border-radius:              15px;
+
+	// Use the cached current wallpaper's icon
+    background-image:           url("~/.cache/current_wallpaper/current-icon.jpg", height);
+}
+
+
+listbox {
+	padding:					 16px 16px 16px 0px;
+    spacing:                     25px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "message", "listview" ];
+}
+
+listview {
+    columns:                     1;
+    lines:                       6;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    border:                      0px;
+    spacing:                     16px;
+    background-color:            transparent;
+}
+
+inputbar {
+    children:                    [ "entry" ];
+    border-radius:               12px;
+    text-color:                  @foreground;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     14px;
+}
+
+entry {
+    cursor:                     text;
+    expand:                     false;
+    placeholder-color:          inherit;
+    placeholder:                "Search";
+    background-color:           transparent;
+    text-color:                 @foreground;
+}
+
+element {
+    cursor:                     pointer;
+    spacing:                    15px;
+    background-color:           transparent;
+    border-radius:              10px;
+    padding:                    8px;
+}
+
+element-text {
+    vertical-align:              0.5;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+element-icon {
+    size:                        30px;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color:            transparent;
+}
+
+element selected.normal {
+    text-color:                  @foreground;
+}

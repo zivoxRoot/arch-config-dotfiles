@@ -1,0 +1,139 @@
+// Import colors from pywal16
+@import "~/.cache/wal/colors-rofi-dark"
+
+configuration {
+    modi:                       "drun,run,filebrowser,window";
+    show-icons:                 true;
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
+}
+
+* {
+	font:						"CaskaydiaCove Nerd Font Mono 14";
+}
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       1000px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+	padding: 0px;
+
+    enabled:                     true;
+    border-radius:               15px;
+    cursor:                      "default";
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    background-color:            transparent;
+    orientation:                 horizontal;
+    children:                    [ "imagebox", "listbox" ];
+}
+
+imagebox {
+    padding:                     20px;
+    background-color:            transparent;
+
+	// Use the cached current wallpaper's icon
+    background-image:            url("~/.cache/current_wallpaper/current-icon.jpg", height);
+    orientation:                 vertical;
+    children:                    [ "inputbar", "dummy" ];
+}
+
+listbox {
+    spacing:                     20px;
+    padding:                     20px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "message", "listview" ];
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     15px;
+    border-radius:               10px;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "";
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search";
+    placeholder-color:           inherit;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    spacing:                     15px;
+    padding:                     8px;
+    border-radius:               10px;
+    background-color:            transparent;
+    cursor:                      pointer;
+}
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        32px;
+    cursor:                      inherit;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+message {
+    background-color:            transparent;
+}
+textbox {
+    padding:                     15px;
+    border-radius:               10px;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+error-message {
+    padding:                     15px;
+    border-radius:               20px;
+}
