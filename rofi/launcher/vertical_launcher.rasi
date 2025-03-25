@@ -6,9 +6,6 @@ configuration {
     show-icons: 			true;
 	drun-display-format: 	"{name}";
 	window-format: 			"{w} · {c} · {t}";
-}
-
-* {
     font: 					"CaskaydiaCove Nerd Font Mono 14";
 }
 
@@ -49,8 +46,8 @@ inputbar {
     padding: 90px 			70px;
     background-color: 		transparent;
 
-	// Use the cached current wallpaper's icon
-    background-image: 		url("~/.cache/current_wallpaper/current-icon.jpg", width);
+	// Use the cached current wallpaper
+    background-image: 		url("~/.cache/current_wallpaper/current.jpg", width);
     orientation: 			horizontal;
     children: 				[ "entry" ];
 }
