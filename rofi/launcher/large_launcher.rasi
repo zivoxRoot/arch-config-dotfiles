@@ -16,7 +16,7 @@ window {
     location:                   center;
     anchor:                     center;
     border-radius:              15px;
-    width:                      1000px;
+    width:                      950px;
 	padding:					0px;
 }
 
