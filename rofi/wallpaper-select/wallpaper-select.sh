@@ -42,12 +42,17 @@ executeCommand() {
 	# Reload waybar
 	pkill waybar && waybar &
 
-	# Reload thmux theme and reload tmux
+	# Reload tmux theme and reload tmux
 	bash $HOME/.config/tmux/tmux_colors.sh
 	tmux source $HOME/.config/tmux/tmux.conf
 
+	# Copy the new theme file and reload the swaync theme
+	cp $HOME/.cache/wal/colors-waybar.css $HOME/.config/swaync/theme.css
+	swaync-client -rs
+
 	# Notify the user
-	notify-send -i "${file}" "Wallpaper-switcher" "Switching to ${file}"
+	wallpaper_name=$(basename "$file")
+	notify-send -i "${wallpaper_name}" "Wallpaper-switcher" "Switching to ${file}"
 }
 
 # Show the images
@@ -76,7 +81,6 @@ main() {
 		# Getting the file
 		if [[ "$(basename "$file" | cut -d. -f1)" = "$choice" ]]; then
 			selectedFile="$file"
-			# notify-send "Wallpaper-switcher" "Switching to $file"
 			break
 		fi
 	done

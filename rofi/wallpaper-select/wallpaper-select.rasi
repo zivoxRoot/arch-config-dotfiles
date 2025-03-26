@@ -5,14 +5,13 @@ configuration {
     modi:					"drun";
     show-icons:				true;
     drun-displa-format:		"{name}";
-    font:					"CaskaydiaCove Nerd Font Mono 17";
+    font:					"CaskaydiaCove Nerd Font Mono 14";
 }
 
 window {
     enabled:				true;
     fullscreen:				false;
     width:					100%;
-    transparency:			"real";
     cursor:					"default";
     spacing:				0px;
     padding:				0px;
@@ -29,10 +28,8 @@ mainbox {
 
 listview {
     enabled:				true;
-    columns:				6;
+    columns:				3;
     lines:					1;
-    spacing:				50px;
-    padding:				20px 30px;
     cycle:					true;
     dynamic:				false;
     scrollbar:				false;
@@ -46,22 +43,17 @@ listview {
 
 element {
     enabled:				true;
-    orientation:			horizontal;
+    orientation:			vertical;
     spacing:				0px;
     padding:				0px;
+	margin: 				20px;
     border-radius:			20px;
     cursor:					pointer;
     background-color:		transparent;
 }
 
-@media(max-aspect-ratio: 1.8) {
-    element {
-        orientation:		vertical;
-    }
-}
-
 element-icon {
-    size:					33%;
+    size:					60%;
     cursor:					inherit;
     border-radius:			0px;
     background-color:		transparent;
