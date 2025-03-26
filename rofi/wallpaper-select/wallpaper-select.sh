@@ -4,6 +4,7 @@
 
 # Wallpapers Path
 wallpaperDir="$HOME/Picture/wallpapers"
+iconsDir="$HOME/.cache/wallpaper-select"
 themesDir="$HOME/.config/rofi/wallpaper-select"
 
 # Transition config
@@ -15,21 +16,47 @@ TRANSITION_POS="0.7,0.7"
 SWWW_PARAMS="--transition-fps ${FPS} --transition-type ${TYPE} --transition-duration ${DURATION} --transition-bezier ${BEZIER} --transition-pos ${TRANSITION_POS}"
 
 # Retrieve image files as a list
-PICS=($(find -L "${wallpaperDir}" -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png -o -iname \*.gif \) | sort ))
+PICS=($(find -L "${iconsDir}" -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png -o -iname \*.gif \) | sort ))
 
 # Rofi command
 rofiCommand="rofi -show -dmenu -theme ${themesDir}/wallpaper-select.rasi"
+
+# Check that all wallpapers in $wallpaperDir have a corresponding icon in $iconsDir
+checkWallpapers() {
+	# Ensure both folder exist
+	if [[ ! -d "$wallpaperDir" || ! -d "$iconsDir" ]]; then
+		notify-send "Wallpaper switcher" "One or both folders don't exist..."
+		exit 1
+	fi
+
+	# Loop through the $wallpapersDir
+	for file in "$wallpaperDir"/*.jpg; do
+		[[ -e "$file" ]] || continue; # Skip if no jpg file being found
+
+		# Extract filename
+		filename=$(basename "$file")
+
+		# Check if the file exists in $iconsDir
+		if [[ ! -e "$iconsDir/$filename" ]]; then
+			notify-send "Processing: $filename"
+
+			# Use imageMagick to copy and strip the wallpaper to an icon and put it in $iconsDir
+			magick "$wallpaperDir/$filename" -strip -thumbnail 500x500^ -gravity center -extent 500x500 "$iconsDir/$filename"
+		fi
+	done
+}
 
 # Execute command according the wallpaper manager
 executeCommand() {
 
 	# Set the wallpaper
 	if command -v swww &>/dev/null; then
-		swww img "$1" ${SWWW_PARAMS}
-
+		# Get the actual wallpaper from $wallpapersDir and set it
+		wallpaperName=$(basename "$1")
+		wallpaperToSet=$(find "${wallpaperDir}" -name "$wallpaperName")
+		swww img "$wallpaperToSet" ${SWWW_PARAMS}
 	else
-		notify-send "Wallpaper switch" "Swww is not installed"
-		echo "Wallpaper switch : Swww is not installed"
+		notify-send "Wallpaper switcher" "Swww is not installed"
 		exit 1
 	fi
 
@@ -102,5 +129,7 @@ if pidof rofi > /dev/null; then
 	pkill rofi
 	exit 0
 fi
+
+checkWallpapers
 
 main

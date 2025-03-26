@@ -28,7 +28,7 @@ mainbox {
 
 listview {
     enabled:				true;
-    columns:				3;
+    columns:				6;
     lines:					1;
     cycle:					true;
     dynamic:				false;
@@ -53,7 +53,7 @@ element {
 }
 
 element-icon {
-    size:					60%;
+    size:					30%;
     cursor:					inherit;
     border-radius:			0px;
     background-color:		transparent;
