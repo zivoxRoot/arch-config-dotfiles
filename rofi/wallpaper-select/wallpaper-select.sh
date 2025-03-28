@@ -5,7 +5,7 @@
 # Wallpapers Path
 wallpapersDir="$HOME/Picture/wallpapers"
 iconsDir="$HOME/.cache/wallpaper-select"
-themeFile="$HOME/.config/rofi/wallpaper-select/wallpaper-select.rasi"
+rofiThemeFile="$HOME/.config/rofi/wallpaper-select/wallpaper-select.rasi"
 
 # Transition config
 FPS=60
@@ -15,12 +15,12 @@ BEZIER="0.4,0.2,0.4,1.0"
 TRANSITION_POS="0.7,0.7"
 SWWW_PARAMS="--transition-fps ${FPS} --transition-type ${TYPE} --transition-duration ${DURATION} --transition-bezier ${BEZIER} --transition-pos ${TRANSITION_POS}"
 
-# Rofi command
-rofiArgs="rofi -show -dmenu -theme $themeFile"
+# Rofi arguments
+rofiArgs="rofi -show -dmenu -theme $rofiThemeFile"
 
 # getPics retrieves image files as a list
 getPics() {
-	PICS=($(find -L "${iconsDir}" -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png -o -iname \*.gif \) | sort ))
+	PICS=($(find -L "${iconsDir}" -type f \( -iname \*.jpg \) | sort ))
 }
 
 # updateIconFolder checks that all wallpapers in $wallpapersDir have a corresponding icon in $iconsDir and that all icons have a corresponding wallpaper
@@ -127,7 +127,6 @@ launchSelector() {
 		return 0
 	else
 		notify-send "Wallpaper switch" "Image not found"
-		echo "Wallpaper switch : Image not found."
 		exit 1
 	fi
 }
