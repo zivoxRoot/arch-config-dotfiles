@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# NOTE: Original script from JaKooLit (https://github.com/JaKooLit) and Abhra00 (https://github.com/Abhra00/Hyprland-Wallust/blob/main/hypr/scripts/wallSelect.sh), I changed it a lot.
+# NOTE: Script inspird by JaKooLit (https://github.com/JaKooLit) and Abhra00 (https://github.com/Abhra00)
 
 # Wallpapers Path
-wallpaperDir="$HOME/Picture/wallpapers"
+wallpapersDir="$HOME/Picture/wallpapers"
 iconsDir="$HOME/.cache/wallpaper-select"
-themesDir="$HOME/.config/rofi/wallpaper-select"
+themeFile="$HOME/.config/rofi/wallpaper-select/wallpaper-select.rasi"
 
 # Transition config
 FPS=60
@@ -15,22 +15,19 @@ BEZIER="0.4,0.2,0.4,1.0"
 TRANSITION_POS="0.7,0.7"
 SWWW_PARAMS="--transition-fps ${FPS} --transition-type ${TYPE} --transition-duration ${DURATION} --transition-bezier ${BEZIER} --transition-pos ${TRANSITION_POS}"
 
-# Retrieve image files as a list
-PICS=($(find -L "${iconsDir}" -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png -o -iname \*.gif \) | sort ))
-
 # Rofi command
-rofiCommand="rofi -show -dmenu -theme ${themesDir}/wallpaper-select.rasi"
+rofiArgs="rofi -show -dmenu -theme $themeFile"
 
-# Check that all wallpapers in $wallpaperDir have a corresponding icon in $iconsDir
+# getPics retrieves image files as a list
+getPics() {
+	PICS=($(find -L "${iconsDir}" -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png -o -iname \*.gif \) | sort ))
+}
+
+# updateIconFolder checks that all wallpapers in $wallpapersDir have a corresponding icon in $iconsDir and that all icons have a corresponding wallpaper
 updateIconFolder() {
-	# Ensure both folder exist
-	if [[ ! -d "$wallpaperDir" || ! -d "$iconsDir" ]]; then
-		notify-send "Wallpaper switcher" "One or both folders don't exist..."
-		exit 1
-	fi
 
 	# Loop through the $wallpapersDir
-	for file in "$wallpaperDir"/*.jpg; do
+	for file in "$wallpapersDir"/*.jpg; do
 		[[ -e "$file" ]] || continue; # Skip if no jpg file being found
 
 		# Extract filename
@@ -41,7 +38,7 @@ updateIconFolder() {
 			notify-send "Wallpaper switcher" "Converting $filename to icon"
 
 			# Use imageMagick to copy and strip the wallpaper to an icon and put it in $iconsDir
-			magick "$wallpaperDir/$filename" -strip -thumbnail 500x500^ -gravity center -extent 500x500 "$iconsDir/$filename"
+			magick "$wallpapersDir/$filename" -strip -thumbnail 500x500^ -gravity center -extent 500x500 "$iconsDir/$filename"
 		fi
 	done
 
@@ -51,25 +48,25 @@ updateIconFolder() {
 		# Extract filename
 		filename=$(basename "$file")
 
-		# Check if the file exists in $iconsDir
-		if [[ ! -e "$wallpaperDir/$filename" ]]; then
+		# Check that the wallpaper exists in $iconsDir
+		if [[ ! -e "$wallpapersDir/$filename" ]]; then
 			notify-send "Wallpaper switcher" "Deleting icon $filename"
 			rm "$iconsDir/$filename"
 		fi
 	done
 
-	# Reload the PICS
-	PICS=($(find -L "${iconsDir}" -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png -o -iname \*.gif \) | sort ))
+	# Reload the wallpapers list
+	getPics
 }
 
 # Execute command according the wallpaper manager
-executeCommand() {
+applyWallpaper() {
 
 	# Set the wallpaper
 	if command -v swww &>/dev/null; then
 		# Get the actual wallpaper from $wallpapersDir and set it
 		wallpaperName=$(basename "$1")
-		wallpaperToSet=$(find "${wallpaperDir}" -name "$wallpaperName")
+		wallpaperToSet=$(find "${wallpapersDir}" -name "$wallpaperName")
 		swww img "$wallpaperToSet" ${SWWW_PARAMS}
 	else
 		notify-send "Wallpaper switcher" "Swww is not installed"
@@ -99,20 +96,16 @@ executeCommand() {
 }
 
 # Show the images
-menu() {
+displayWallpapers() {
 	for i in "${!PICS[@]}"; do
 		printf "$(basename "${PICS[$i]}" | cut -d. -f1)\x00icon\x1f${PICS[$i]}\n"
 	done
 }
 
-# If swww exists, start it
-if command -v swww &>/dev/null; then
-	swww query || swww init
-fi
 
 # Execution
-main() {
-	choice=$(menu | ${rofiCommand})
+launchSelector() {
+	choice=$(displayWallpapers | ${rofiArgs})
 
 	# No choice case
 	if [[ -z $choice ]]; then
@@ -121,7 +114,7 @@ main() {
 
 	# Find the selected file
 	for file in "${PICS[@]}"; do
-		# Getting the file
+		# Get the file
 		if [[ "$(basename "$file" | cut -d. -f1)" = "$choice" ]]; then
 			selectedFile="$file"
 			break
@@ -130,22 +123,41 @@ main() {
 
 	# Check the file and execute
 	if [[ -n "$selectedFile" ]]; then
-		executeCommand "${selectedFile}"
+		applyWallpaper "${selectedFile}"
 		return 0
 	else
 		notify-send "Wallpaper switch" "Image not found"
 		echo "Wallpaper switch : Image not found."
 		exit 1
 	fi
-
 }
 
-# Check if rofi is already running
-if pidof rofi > /dev/null; then
-	pkill rofi
-	exit 0
-fi
+# Check that the dependencies exist and call the necessary functions
+main() {
 
-updateIconFolder
+	# Ensure both folder exist
+	if [[ ! -d "$wallpapersDir" || ! -d "$iconsDir" ]]; then
+		notify-send "Wallpaper switcher" "One or both folders don't exist..."
+		exit 1
+	fi
 
+	# If swww exists, start it
+	if command -v swww &>/dev/null; then
+		swww query || swww init
+	fi
+
+	# Check if rofi is already running
+	if pidof rofi > /dev/null; then
+		pkill rofi
+		exit 0
+	fi
+
+	getPics
+
+	updateIconFolder
+
+	launchSelector
+}
+
+# Call the main function
 main
