@@ -1,6 +1,6 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-# NOTE: Original script from JaKooLit (https://github.com/JaKooLit) and Abhra00 (https://github.com/Abhra00/Hyprland-Wallust/blob/main/hypr/scripts/wallSelect.sh)
+# NOTE: Original script from JaKooLit (https://github.com/JaKooLit) and Abhra00 (https://github.com/Abhra00/Hyprland-Wallust/blob/main/hypr/scripts/wallSelect.sh), I changed it a lot.
 
 # Wallpapers Path
 wallpaperDir="$HOME/Picture/wallpapers"
@@ -22,7 +22,7 @@ PICS=($(find -L "${iconsDir}" -type f \( -iname \*.jpg -o -iname \*.jpeg -o -ina
 rofiCommand="rofi -show -dmenu -theme ${themesDir}/wallpaper-select.rasi"
 
 # Check that all wallpapers in $wallpaperDir have a corresponding icon in $iconsDir
-checkWallpapers() {
+updateIconFolder() {
 	# Ensure both folder exist
 	if [[ ! -d "$wallpaperDir" || ! -d "$iconsDir" ]]; then
 		notify-send "Wallpaper switcher" "One or both folders don't exist..."
@@ -38,12 +38,28 @@ checkWallpapers() {
 
 		# Check if the file exists in $iconsDir
 		if [[ ! -e "$iconsDir/$filename" ]]; then
-			notify-send "Processing: $filename"
+			notify-send "Wallpaper switcher" "Converting $filename to icon"
 
 			# Use imageMagick to copy and strip the wallpaper to an icon and put it in $iconsDir
 			magick "$wallpaperDir/$filename" -strip -thumbnail 500x500^ -gravity center -extent 500x500 "$iconsDir/$filename"
 		fi
 	done
+
+	# Loop through the icons and remove the ones that don't have their corresponding wallpaper anymore
+	for file in "$iconsDir"/*.jpg; do
+
+		# Extract filename
+		filename=$(basename "$file")
+
+		# Check if the file exists in $iconsDir
+		if [[ ! -e "$wallpaperDir/$filename" ]]; then
+			notify-send "Wallpaper switcher" "Deleting icon $filename"
+			rm "$iconsDir/$filename"
+		fi
+	done
+
+	# Reload the PICS
+	PICS=($(find -L "${iconsDir}" -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png -o -iname \*.gif \) | sort ))
 }
 
 # Execute command according the wallpaper manager
@@ -78,8 +94,8 @@ executeCommand() {
 	swaync-client -rs
 
 	# Notify the user
-	wallpaper_name=$(basename "$file")
-	notify-send -i "${wallpaper_name}" "Wallpaper-switcher" "Switching to ${file}"
+	wallpaper_name=$(basename "$file" | cut -d. -f1)
+	notify-send -i "${file}" "Wallpaper-switcher" "Switching to ${wallpaper_name}"
 }
 
 # Show the images
@@ -130,6 +146,6 @@ if pidof rofi > /dev/null; then
 	exit 0
 fi
 
-checkWallpapers
+updateIconFolder
 
 main

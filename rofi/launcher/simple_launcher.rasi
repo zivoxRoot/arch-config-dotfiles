@@ -2,74 +2,77 @@
 @import "~/.cache/wal/colors-rofi-dark"
 
 configuration {
-	modi:                       "drun,run,filebrowser,window";
+	modi:                       "drun";
     show-icons:                 true;
+    display-drun:               "";
 	drun-display-format:        "{name}";
-	window-format:              "{w} · {c}";
+	font:						"CaskaydiaCove Nerd Font Mono 14";
 }
 
 window {
-    font:                        "CaskaydiaCove Nerd Font Mono 14";
     transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1000px;
+	height:						 450px;
+    width:                       700px;
     x-offset:                    0px;
     y-offset:                    0px;
-	padding: 0px;
 
     enabled:                     true;
-    border-radius:               15px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               12px;
     cursor:                      "default";
 }
 
 mainbox {
     enabled:                     true;
     spacing:                     0px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
     background-color:            transparent;
-    orientation:                 vertical;
-    children:                    [ "inputbar", "listbox" ];
-}
-
-listbox {
-    spacing:                     20px;
-    padding:                     20px;
-    background-color:            transparent;
-    orientation:                 vertical;
-    children:                    [ "message", "listview" ];
+    children:                    [ "inputbar", "listview" ];
 }
 
 inputbar {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     100px 60px;
-    background-color:            transparent;
-    background-image:            url("~/.cache/current_wallpaper/current.jpg", width);
-    text-color:                  @foreground;
-    orientation:                 horizontal;
-    children:                    [ "entry", "dummy" ];
+    margin:                      0px;
+    padding:                     15px;
+    border:                      0px solid;
+    border-radius:               0px;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "::";
+    background-color:            inherit;
+    text-color:                  inherit;
 }
 entry {
     enabled:                     true;
-    expand:                      false;
-    width:                       300px;
-    padding:                     12px 16px;
-    border-radius:               10px;
+    background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
     placeholder:                 "Search";
     placeholder-color:           inherit;
 }
-dummy {
-    expand:                      true;
-    background-color:            transparent;
-}
 
 listview {
     enabled:                     true;
-    columns:                     6;
-    lines:                       3;
+    columns:                     1;
+    lines:                       6;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -78,35 +81,42 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     10px;
+    spacing:                     5px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
     background-color:            transparent;
-    text-color:                  @foreground;
     cursor:                      "default";
 }
+// scrollbar {
+//     handle-width:                5px ;
+// //     handle-color:                @selected;
+//     border-radius:               0px;
+// //     background-color:            @background-alt;
+// }
 
 element {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     10px;
-    border-radius:               15px;
+    margin:                      0px;
+    padding:                     8px;
+    border:                      0px solid;
+    border-radius:               0px;
     background-color:            transparent;
     cursor:                      pointer;
-    orientation:                 vertical;
-}
-element normal.normal {
-    background-color:            inherit;
-    text-color:                  inherit;
 }
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        64px;
+    size:                        30px;
     cursor:                      inherit;
 }
 element-text {
     background-color:            transparent;
     text-color:                  inherit;
+    highlight:                   inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.5;
+    horizontal-align:            0.0;
 }

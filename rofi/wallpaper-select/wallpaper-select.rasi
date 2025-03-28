@@ -46,14 +46,14 @@ element {
     orientation:			vertical;
     spacing:				0px;
     padding:				0px;
-	margin: 				20px;
+	margin: 				2% 1%;
     border-radius:			20px;
     cursor:					pointer;
     background-color:		transparent;
 }
 
 element-icon {
-    size:					30%;
+    size:					33%;
     cursor:					inherit;
     border-radius:			0px;
     background-color:		transparent;
