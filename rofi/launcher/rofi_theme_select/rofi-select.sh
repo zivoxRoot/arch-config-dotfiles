@@ -3,7 +3,7 @@
 # NOTE: Script inspird by JaKooLit (https://github.com/JaKooLit) and Abhra00 (https://github.com/Abhra00)
 
 iconsDir="$HOME/.config/rofi/launcher/assets"
-rofiThemeFile="$HOME/.config/rofi/wallpaper-select/wallpaper-select.rasi"
+rofiThemeFile="$HOME/.config/rofi/launcher/rofi_theme_select/rofi-select.rasi"
 
 # Rofi arguments
 rofiArgs="rofi -show -dmenu -theme $rofiThemeFile"
@@ -19,12 +19,12 @@ applyTheme() {
 	choice=$(basename $selectedTheme | cut -d. -f1)
 
 	# Remove the current rofi theme if it exists
-	if [[ -e "$HOME/.config/rofi/launcher/current_launcher/current.rasi" ]]; then
-		rm "$HOME/.config/rofi/launcher/current_launcher/current.rasi"
+	if [[ -e "$HOME/.config/rofi/launcher/current_theme/theme.rasi" ]]; then
+		rm "$HOME/.config/rofi/launcher/current_theme/theme.rasi"
 	fi
 
 	# Copy the theme file into current_launcher folder
-	cp "$HOME/.config/rofi/launcher/themes/${choice}.rasi" "$HOME/.config/rofi/launcher/current_launcher/current.rasi"
+	cp "$HOME/.config/rofi/launcher/themes/${choice}.rasi" "$HOME/.config/rofi/launcher/current_theme/theme.rasi"
 
 }
 

@@ -1,19 +1,16 @@
 # Rofi launcher
 
-The colors are sourced from pywal16.
-
-The rofi launcher is used in :
-
-**$HOME/.config/hypr/conf/keybindings.conf**
-
-**$HOME/.config/hypr/scripts/logout-menu.sh**
-
-**./change-default-launcher.sh**
+All the rofi menus source their colors from pywal16.
 
 ---
 
-## Files
+## Structure
+**./launcher.sh** --> Launches a rofi drun instance, is called in **$HOME/.config/hypr/conf/keybindings.conf**
 
-**./current_launcher/current.rasi** --> The currently used rofi launcher, dynamically changed by **./change-default-launcher.sh**
+**./themes/** --> The rofi themes in .rasi files
 
-**./rofi-select.sh** --> A bash script that open a rofi menu to select which rofi launcher you want, then apply it by deleting the **./current_launcher/current.rasi** file and copying the selected launcher in **./current_launcher/current.rasi**
+**./rofi_theme_select/** --> Contains the rofi theme selector, called in **$HOME/.config/hypr/conf/keybindings.conf**
+
+**./assets/** --> The images used to illustrate the rofi themes in the theme switcher
+
+**./current_theme/** --> A cache for the currently used rofi theme
