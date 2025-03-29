@@ -56,13 +56,13 @@ return {
 						lspconfig.gopls.setup({
 							capabilities = capabilities,
 							settings = {
-								-- gopls = {
-								-- 	analyses = {
-								-- 		unusedparams = true,
-								-- 	},
+								gopls = {
+									analyses = {
+										unusedparams = true,
+									},
 								-- 	staticcheck = true,
 								-- 	gofumpt = true,
-								-- },
+								},
 							},
 						})
 					end
@@ -72,7 +72,7 @@ return {
 			-- Install additional Go tools
 			require("mason-lspconfig").setup({
 				-- ensure_installed = { "gopls", "gofumpt", "goimports" },
-				-- ensure_installed = { "gopls" },
+				ensure_installed = { "gopls" },
 			})
 		end,
 	}

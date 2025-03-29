@@ -11,6 +11,14 @@ return {
 			-- Vim like navigation in insert mode
 			require("telescope").setup({
 				defaults = {
+					find_files = {
+						hidden = true,
+					},
+					file_ignore_patterns = {
+						"%.git/",  -- Ignore .git directory and all its contents
+						"%.gitignore",  -- Optionally ignore .gitignore
+					},
+
 					mappings = {
 						i = {
 							["<M-j>"] = require("telescope.actions").move_selection_next,
@@ -30,10 +38,18 @@ return {
 					find_files = {
 						hidden = true,
 					},
+					file_ignore_patterns = {
+						"%.git/",  -- Ignore .git directory and all its contents
+						"%.gitignore",  -- Optionally ignore .gitignore
+					},
 				},
 				extensions = {
 					file_browser = {
 						hidden = true,
+					},
+					file_ignore_patterns = {
+						"%.git/",  -- Ignore .git directory and all its contents
+						"%.gitignore",  -- Optionally ignore .gitignore
 					},
 				},
 			})
