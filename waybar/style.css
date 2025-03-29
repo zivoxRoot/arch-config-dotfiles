@@ -1,6 +1,8 @@
 /* Import pywal16 colors */
  @import '/home/theophile/.cache/wal/colors-waybar.css'; 
 
+/* Font for arch --> ttf-jetbrains-mono-nerd */
+
 /* Global styles */
 * {
   border: none;
@@ -26,7 +28,7 @@ window#waybar {
   margin-bottom: 0px;
   border-radius: 30px;
   background: @color1;
-  color: @color7;
+  color: @foreground;
   transition: 0.3s;
 }
 
