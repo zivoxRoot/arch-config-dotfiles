@@ -82,6 +82,9 @@ applyWallpaper() {
 	# Reload waybar
 	pkill waybar && waybar &
 
+	# Update the neovim colorscheme
+	nvim --server ~/.cache/nvim-server --remote-send "<Esc>:lua vim.cmd('colorscheme pywal16')<CR>"
+
 	# Reload tmux theme and reload tmux
 	bash $HOME/.config/tmux/tmux_colors.sh
 	tmux source $HOME/.config/tmux/tmux.conf
