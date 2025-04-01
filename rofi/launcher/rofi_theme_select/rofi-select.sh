@@ -26,6 +26,8 @@ applyTheme() {
 	# Copy the theme file into current_launcher folder
 	cp "$HOME/.config/rofi/launcher/themes/${choice}.rasi" "$HOME/.config/rofi/launcher/current_theme/theme.rasi"
 
+	# Notify the user
+	notify-send "Rofi theme switcher" "Theme $choice applied"
 }
 
 # Show the themes
