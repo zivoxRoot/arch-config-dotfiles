@@ -43,6 +43,7 @@ qt5-wayland
 qt6-wayland
 rofi-wayland
 rustlings
+ripgrep
 swaync
 swww
 tealdeer
