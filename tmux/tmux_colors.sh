@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # NOTE: This script loads the color from pywal16 and generate a color scheme for tmux
 
@@ -10,13 +10,13 @@ cat <<EOF > "$HOME/.config/tmux/colors.conf"
 
 # Left side
 set -g status-left " \
-#[fg=color14]#[bg=color4,fg=color15] #S #[fg=color14,bg=color0] \
+#[fg=color14,bg=color0]#[bg=color4,fg=color15] #S #[fg=color14,bg=color0] \
  "
 
 # Right side
 set -g status-right "#[fg=color14,bg=color0]#[bg=color4,fg=color15] #(cat /sys/class/power_supply/BAT0/capacity)% #[fg=color14,bg=color0]\
- #[fg=color14,bg=color4]#[bg=color4,fg=color15] %Y-%m-%d #[fg=color14,bg=color0]\
- #[fg=color14,bg=color4]#[bg=color4,fg=color15] %H:%M #[fg=color14,bg=color0]"
+#[fg=color14,bg=color0] #[bg=color0] #[bg=color4,fg=color15] %Y-%m-%d #[fg=color14,bg=color0]\
+#[fg=color14,bg=color0] #[bg=color0] #[bg=color4,fg=color15] %H:%M #[fg=color14,bg=color0]"
 
 # Window styling
 setw -g window-status-format " \
@@ -27,4 +27,7 @@ setw -g window-status-current-format " \
 "
 setw -g window-status-style "bg=color0,fg=color14"
 setw -g window-status-current-style "bg=color0,fg=color14"
+
+# Global background color
+set -g status-style bg=color0
 EOF
