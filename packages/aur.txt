@@ -1,0 +1,13 @@
+bibata-cursor-theme-bin
+ghcup-hs-bin
+hyprshot-git
+krabby-bin
+oh-my-posh-bin
+paru
+paru-debug
+preload
+python-pywal16
+python-pywalfox
+visual-studio-code-bin
+wlogout
+zen-browser-bin
