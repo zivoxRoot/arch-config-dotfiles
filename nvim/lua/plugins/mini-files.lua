@@ -21,11 +21,13 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>e", function()
+		-- vim.keymap.set("n", "<leader>e", function()
+		vim.keymap.set("n", "<leader>xw", function()
 			require("mini.files").open()
 		end, { desc = "Open file explorer (mini.files)" })
 
-		vim.keymap.set("n", "<leader>E", function()
+		-- vim.keymap.set("n", "<leader>E", function()
+		vim.keymap.set("n", "<leader>xqmf", function()
 			require("mini.files").open(vim.api.nvim_buf_get_name(0))
 		end, { desc = "Open file explorer in current file's directory" })
 	end,
