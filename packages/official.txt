@@ -63,5 +63,6 @@ xdg-desktop-portal-hyprland
 xdg-utils
 yazi
 zathura
+zathura-pdf-poppler
 zoxide
 zsh
