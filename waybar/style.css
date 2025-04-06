@@ -1,153 +1,153 @@
 /* Import pywal16 colors */
- @import '/home/theophile/.cache/wal/colors-waybar.css'; 
+@import "/home/theophile/.cache/wal/colors-waybar.css";
 
-/* Font for arch --> ttf-jetbrains-mono-nerd */
-
-/* Global styles */
+/* General styles */
 * {
-  border: none;
-  border-radius: 10px;
-  font-family: "JetbrainsMono Nerd Font";
-  font-size: 12px;
-  min-height: 10px;
+	font-family: "JetBrains Mono NerdFonts", sans-serif;
+	font-size: 12px;
+	margin-top: 3px;
+	margin-left: 8px;
+	margin-right: 8px;
+	margin-bottom: 0px;
+	border-radius: 30px;
+	border: none;
+	border-radius: 50px;
+	color: @foreground;
+	font-weight: bold;
 }
 
 window#waybar {
-  background: transparent;
-}
-
-#clock,
-#network,
-#bluetooth,
-#pulseaudio,
-#battery {
-  margin-top: 6px;
-  margin-left: 8px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-bottom: 0px;
-  border-radius: 30px;
-  background: @color1;
-  color: @foreground;
-  transition: 0.3s;
+	background: transparent;
 }
 
 tooltip {
-  background-color: @color1;
-  border-radius: 10px;
+	background-color: @color2;
+	border-radius: 10px;
 }
 
 tooltip label {
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
+	color: white;
+	font-size: 14px;
+	font-weight: 600;
 }
 
 /* Clock */
 #clock {
-  transition: 0.3s;
+	margin-right: 10px;
+	margin-left: 5px;
+	padding-right: 18px;
+	padding-left: 18px;
+	background: @color2;
+	transition: 0.3s;
 }
 
 #clock:hover {
-  background: @color2;
+	background: @color4;
 }
 
-/* Workspaces */
+/* workspaces */
 #workspaces {
-  margin-top: 6px;
-  padding-right: 1px;
-  padding-left: 1px;
-  border-radius: 30px;
-  background: @color5;
-  transition: 0.3s;
+	padding-right: 5px;
+	padding-left: 5px;
+	background-color: @background;
+	border-radius: 30px;
 }
 
 #workspaces button {
-  margin: 2px;
-  border-radius: 15px;
-  border: 0px;
-  color: @foreground;
-  border-radius: 50px;
-  background: @color5;
-  transition: 0.3s;
+	padding: 2px 2px;
+	margin: 5px 1px;
+	border-radius: 30px;
+	background-color: @color8;
+	transition: all 0.4s;
+	box-shadow: none;
 }
 
 #workspaces button.active {
-  color: @foreground;
-  background: @color1;
-  padding-left: 15px;
-  padding-right: 15px;
-  border-radius: 15px;
-  transition: 0.3s;
+	background-color: @color2;
+	padding: 4px 20px;
+	transition: all 0.4s;
 }
 
 #workspaces button:hover {
-  background: @color2;
-  color: @color7;
+	background: @color5;
+	border: none;
 }
 
-/* Network */
+/* Notifications */
+#custom-notification {
+	margin-right: 5px;
+	margin-left: 5px;
+	padding-right: 18px;
+	padding-left: 18px;
+	background-color: @background;
+}
+
+/* Group-network*/
+#net {
+	margin-right: 5px;
+	margin-left: 5px;
+	padding-right: 10px;
+	padding-left: 10px;
+	background-color: @background;
+}
+
+#bluetooth,
 #network {
-  transition: 0.3s;
+	margin-right: 10px;
+	margin-left: 10px;
 }
 
-#network:hover {
-  background: @color2;
+/* Luminosity */
+#backlight-slider slider {
+	min-height: 0px;
+	min-width: 0px;
+	opacity: 0;
+	background-image: none;
+	border: none;
+	box-shadow: none;
 }
 
-#network.disconnected {
-  color: @color7;
-  transition: 0.3s;
-  background: @color1;
+#backlight-slider trough {
+	min-height: 10px;
+	min-width: 25px;
+	border-radius: 5px;
+	background-color: @foreground;
 }
 
-#network.disconnected:hover {
-  background: @color1;
+#backlight-slider highlight {
+	min-width: 10px;
+	border-radius: 5px;
+	background-color: @color2;
 }
 
-/* Bluetooth */
-#bluetooth {
-  transition: 0.3s;
+#backlight {
+	padding-right: 18px;
+	padding-left: 18px;
+	background-color: @background;
 }
 
-#bluetooth:hover {
-  background: @color2;
-}
-
-#bluetooth.disconnected {
-  color: @color7;
-  transition: 0.3s;
-  background: @color1;
-}
-
-#bluetooth.disconnected:hover {
-  background: @color1;
-}
-
-/* Pulseaudio */
-#pulseaudio {
-  transition: 0.3s;
-}
-
-#pulseaudio:hover {
-  background: @color2;
-}
-
-#pulseaudio.muted {
-  color: @color7;
-  background: @color1;
-  transition: 0.3s;
-}
-
-#pulseaudio.muted:hover {
-  background: @color1;
+/* Volume */
+#wireplumber {
+	padding-right: 10px;
+	padding-left: 10px;
+	background-color: @background;
 }
 
 /* Battery */
 #battery {
-  margin-right: 12px;
+	padding-right: 18px;
+	padding-left: 18px;
+	margin-right: 5px;
+	margin-left: 5px;
+	padding-right: 10px;
+	padding-left: 10px;
+	background-color: @background;
 }
 
-#battery:hover {
-  background: @color2;
+#battery.warning {
+	color: @color2;
+}
+
+#battery.critical {
+	color: red;
 }
