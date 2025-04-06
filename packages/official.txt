@@ -62,5 +62,6 @@ wofi
 xdg-desktop-portal-hyprland
 xdg-utils
 yazi
+zathura
 zoxide
 zsh
