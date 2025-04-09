@@ -126,6 +126,15 @@ tooltip label {
 	background-color: @background;
 }
 
+/* Hyprsunset */
+#custom-hyprsunset {
+    font-size: 20px;
+    color: white;
+	padding-right: 18px;
+	padding-left: 18px;
+	background-color: @background;
+}
+
 /* Volume */
 #wireplumber {
 	padding-right: 10px;

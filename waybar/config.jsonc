@@ -4,7 +4,7 @@
 	"layer": "top",
 	"modules-left": [ "clock" ],
 	"modules-center": [ "hyprland/workspaces" ],
-	"modules-right": [ "custom/notification", "group/net", "backlight", "wireplumber", "battery" ],
+	"modules-right": [ "custom/notification", "group/net", "backlight", "custom/hyprsunset", "wireplumber", "battery" ],
 
 	// Clock
 	"clock": {
@@ -89,6 +89,14 @@
 		"format-icons": ["󰃚", "󰃝", "󰃟", "󰃠"],
 		"tooltip": false
 	},
+
+	// Hyprsunset
+	"custom/hyprsunset": {
+        "format": "{}",
+        "exec": "~/.config/waybar/check-hyprsunset.sh",
+        "interval": 1,  // Update every seconds
+		"tooltip": false,
+    },
 
 	// Volume
 	"wireplumber": {
