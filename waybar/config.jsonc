@@ -4,7 +4,8 @@
 	"layer": "top",
 	"modules-left": [ "clock" ],
 	"modules-center": [ "hyprland/workspaces" ],
-	"modules-right": [ "custom/notification", "group/net", "backlight", "custom/hyprsunset", "wireplumber", "battery" ],
+	// "modules-right": [ "custom/notification", "group/net", "backlight", "custom/hyprsunset", "wireplumber", "battery" ],
+	"modules-right": [ "custom/notification", "group/net", "group/luminosity", "wireplumber", "battery" ],
 
 	// Clock
 	"clock": {
@@ -81,6 +82,15 @@
 		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
 		"on-click": "blueman-manager"
 	},	
+
+	// Group luminosity
+	"group/luminosity": {
+		"orientation": "horizontal",
+		"modules": [
+			"backlight",
+			"custom/hyprsunset"
+		]
+	},
 
 	// Luminosity
 	"backlight": {

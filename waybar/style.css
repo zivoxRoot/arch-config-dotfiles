@@ -97,7 +97,16 @@ tooltip label {
 	margin-left: 10px;
 }
 
-/* Luminosity */
+/* Group-luminosity */
+#luminosity {
+	margin-right: 5px;
+	margin-left: 5px;
+	padding-right: 10px;
+	padding-left: 10px;
+	background-color: @background;
+}
+
+/* Backlight */
 #backlight-slider slider {
 	min-height: 0px;
 	min-width: 0px;
@@ -120,19 +129,10 @@ tooltip label {
 	background-color: @color2;
 }
 
-#backlight {
-	padding-right: 18px;
-	padding-left: 18px;
-	background-color: @background;
-}
-
 /* Hyprsunset */
 #custom-hyprsunset {
     font-size: 20px;
     color: white;
-	padding-right: 18px;
-	padding-left: 18px;
-	background-color: @background;
 }
 
 /* Volume */
