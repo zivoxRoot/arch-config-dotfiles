@@ -43,6 +43,7 @@ alias gbd="git branch -d"
 alias gbs="git checkout -b"
 alias gsw="git switch"
 alias gm="git merge"
+alias gcl"git clone"
 
 # Others
 alias c="code"
@@ -55,6 +56,8 @@ alias rmdir="trash"
 alias music="termusic ~/Music"
 alias mv="mv -i"
 alias cp="cp -ri"
+alias z="zathura"
+alias q="exit"
 
 # Yazi shell wrapper to 'cd' in a directory when quitting yazi with 'q'
 function y() {
