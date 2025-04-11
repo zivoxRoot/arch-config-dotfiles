@@ -12,6 +12,7 @@ fzf
 git
 git-delta
 glow
+godot
 grim
 htop
 hyprland
