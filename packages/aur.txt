@@ -12,3 +12,4 @@ visual-studio-code-bin
 wlogout
 zen-browser-bin
 hypridle-git
+postman-bin
