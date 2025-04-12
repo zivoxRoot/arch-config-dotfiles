@@ -1,4 +1,4 @@
-#/bin/bash
+#/usr/bin/env bash
 
 # Check if hyprsunset is running
 if pgrep -x "hyprsunset" > /dev/null; then
