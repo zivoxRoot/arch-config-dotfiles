@@ -76,7 +76,7 @@ applyWallpaper() {
 	# Set the pywal16 theme
 	wal -i "${1}" -n --cols16
 
-	# Cache the current wallpaper for hyprlock to use it
+	# Cache the current wallpaper for hyprlock and rofi to use it
 	cp "${1}" "$HOME/.cache/current_wallpaper/current.jpg"
 
 	# Reload waybar
@@ -88,6 +88,9 @@ applyWallpaper() {
 	# Reload tmux theme and reload tmux
 	bash $HOME/.config/tmux/tmux_colors.sh
 	tmux source $HOME/.config/tmux/tmux.conf
+
+	# Copy the new theme file for zathura
+	cp $HOME/.cache/wal/zathurarc $HOME/.config/zathura/
 
 	# Copy the new theme file and reload the swaync theme
 	cp $HOME/.cache/wal/colors-waybar.css $HOME/.config/swaync/theme.css
