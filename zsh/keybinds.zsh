@@ -11,6 +11,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+alias .2="cd ../.."
 alias .3="cd ../../.."
 alias .4="cd ../../../.."
 alias .5="cd ../../../../.."
@@ -22,7 +23,7 @@ alias ls="eza --color=always --git --icons=always --group-directories-last --no-
 alias la="eza --color=always --git --icons=always --group-directories-last --no-filesize --no-time --no-user --no-permissions --long --all  "
 alias ll="eza --color=always --git --icons=always --group-directories-last --long --all"
 alias lt="eza --color=always --git --icons=always --group-directories-last -T -L 3 "
-alias l.="eza --color=always --git --icons=always --group-directories-last -all --no-filesize | grep '^\.'"
+alias l.="eza --color=always --git --icons=always --group-directories-last -d .*"
 
 # Nvim
 alias v="nvim"
@@ -58,6 +59,7 @@ alias mv="mv -i"
 alias cp="cp -ri"
 alias z="zathura"
 alias q="exit"
+alias G="| grep"
 
 # Yazi shell wrapper to 'cd' in a directory when quitting yazi with 'q'
 function y() {

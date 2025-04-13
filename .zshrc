@@ -68,3 +68,4 @@ fi
 
 # Print a pokemon when opening the terminal
 # krabby random --no-title
+export PATH="$INSTALL_DIR:$PATH"
