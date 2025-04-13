@@ -3,7 +3,7 @@
 # NOTE: Script inspird by JaKooLit (https://github.com/JaKooLit) and Abhra00 (https://github.com/Abhra00)
 
 # Wallpapers Path
-wallpapersDir="$HOME/Picture/wallpapers"
+wallpapersDir="$HOME/Pictures/wallpapers"
 iconsDir="$HOME/.cache/wallpaper-select"
 rofiThemeFile="$HOME/.config/rofi/wallpaper-select/wallpaper-select.rasi"
 
