@@ -2,11 +2,11 @@
 @import "~/.cache/wal/colors-rofi-dark"
 
 configuration {
+	font:						"CaskaydiaCove Nerd Font Mono 14";
 	modi:                       "drun";
     show-icons:                 true;
     display-drun:               "";
 	drun-display-format:        "{name}";
-	font:						"CaskaydiaCove Nerd Font Mono 14";
 }
 
 window {

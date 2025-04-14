@@ -82,8 +82,10 @@ applyWallpaper() {
 	# Reload waybar
 	pkill waybar && waybar &
 
-	# Reload telegram colors
-	walogram
+	# Reload telegram colors and restart telegram
+	walogram -B
+	# pkill -f telegram-desktop
+	# telegram-desktop &
 
 	# Update the neovim colorscheme
 	nvim --server ~/.cache/nvim-server --remote-send "<Esc>:lua vim.cmd('colorscheme pywal16')<CR>"

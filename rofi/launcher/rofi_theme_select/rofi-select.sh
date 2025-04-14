@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # NOTE: Script inspird by JaKooLit (https://github.com/JaKooLit) and Abhra00 (https://github.com/Abhra00)
 
