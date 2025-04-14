@@ -9,6 +9,11 @@
 	font-family: "CaskaydiaCove Nerd Font Mono";
 }
 
+/* Hide the 'x' button when hovering a notif */
+.close-button {
+    opacity: 0;
+}
+
 .notification-row {
 	outline: none;
 	margin: 0;
@@ -19,7 +24,7 @@
 }
 
 .floating-notifications.background .notification-row .notification-background {
-	background: alpha(@background, .75);
+	background: alpha(@background, .90); /* Transparency of the notif */
 	border: 1.5px solid @color13;
 	border-radius: 12px;  
 	margin: 10px;
