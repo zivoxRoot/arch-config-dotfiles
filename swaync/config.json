@@ -1,78 +1,85 @@
 {
-  "control-center-height": 2,
-  "layer": "overlay",
-  "control-center-layer": "top",
-  "control-center-margin-top": 0,
-  "control-center-margin-bottom": 0,
-  "control-center-margin-right": 0,
-  "control-center-margin-left": 0,
-  "control-center-width": 500,
-  "cssPriority": "application",
-  "control-center-positionX":"right",
-  "control-center-positionY":"center",
-  "fit-to-screen": true,
-  "hide-on-action": false,
-  "hide-on-clear": false,
-  "notification-2fa-action": true,
-  "image-visibility": "when-available",
-  "keyboard-shortcuts": true,
-  "notification-body-4mage-height": 100,
-  "notification-body-image-width": 200,
-  "notification-icon-size": 64,
-  "notification-inline-replies": false,
-  "notification-visibility": {},
-  "notification-window-width": 400,
-  "positionX": "right",
-  "positionY": "bottom",
-  "script-fail-notify": true,
-  "scripts": {},
-  "timeout": 10,
-  "timeout-critical": 0,
-  "timeout-low": 5,
-  "transition-time": 100,
-  "widget-config": {
-    "volume": {
-      "label": "󰕾    "
-  },
+	"control-center-height": 2,
+	"layer": "overlay",
+	"control-center-layer": "top",
+	"control-center-margin-top": 0,
+	"control-center-margin-bottom": 0,
+	"control-center-margin-right": 0,
+	"control-center-margin-left": 0,
+	"control-center-width": 500,
+	"cssPriority": "application",
+	"control-center-positionX":"right",
+	"control-center-positionY":"center",
+	"fit-to-screen": true,
+	"hide-on-action": false,
+	"hide-on-clear": false,
+	"notification-2fa-action": true,
+	"image-visibility": "when-available",
+	"keyboard-shortcuts": true,
+	"notification-body-4mage-height": 100,
+	"notification-body-image-width": 200,
+	"notification-icon-size": 64,
+	"notification-inline-replies": false,
+	"notification-visibility": {},
+	"notification-window-width": 400,
+	"positionX": "right",
+	"positionY": "top",
+	"script-fail-notify": true,
+	"scripts": {},
+	"timeout": 10,
+	"timeout-critical": 0,
+	"timeout-low": 5,
+	"transition-time": 100,
+	"widget-config": {
 
-  "backlight": {
-    "label": "󰃠    ",
-    "device": "nvidia_wmi_ec_backlight"
-  },
-  "buttons-grid": {
-    "actions": [
-        {
-            "label": "󰖩  Wi-FI",
-            "command": "nm-connection-editor"
-        },
-        {
-            "label": "󰝟  Mute",
-            "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-        },
-        {
-            "label": "󰂯  Bluetooth",
-            "command": "blueman-manager"
-        },
-        {
-            "label": "󰌵  Night Light",
-            "command":"home/theophile/.config/hypr/scripts/hyprsunset.sh"
-        }
-      ]
-    },
-    "title": {
-      "text": "",
-      "button-text": "",
-      "clear-all-button": false      
-    }
-},
+		"volume": {
+			"label": "󰕾    "
+		},
 
-  "widgets": [
-    
-    "mpris",
-    "title",
-    "notifications",
-    "buttons-grid",
-    "volume", 
-    "backlight"
-    ]
+		"dnd": {
+			"text": ""
+		},
+
+		"backlight": {
+			"label": "󰃠    ",
+			"device": "nvidia_wmi_ec_backlight"
+		},
+
+		"buttons-grid": {
+			"actions": [
+				{
+					"label": "󰖩  Wi-FI",
+					"command": "nm-connection-editor"
+				},
+				{
+					"label": "󰝟  Mute",
+					"command": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+				},
+				{
+					"label": "󰂯  Bluetooth",
+					"command": "blueman-manager"
+				},
+				{
+					"label": "󰌵  Night Light",
+					"command":"home/theophile/.config/hypr/scripts/hyprsunset.sh"
+				}
+			]
+		},
+
+		"title": {
+			"text": "",
+			"button-text": "",
+			"clear-all-button": false      
+		}
+	},
+
+	"widgets": [
+		"mpris",
+		"dnd",
+		"title",
+		"notifications",
+		"buttons-grid",
+		"volume", 
+		"backlight"
+	]
 }

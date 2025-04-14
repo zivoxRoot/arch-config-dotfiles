@@ -22,8 +22,8 @@
 	background: alpha(@background, .75);
 	border: 1.5px solid @color13;
 	border-radius: 12px;  
-	margin: 16px;
-	padding: 0;
+	margin: 10px;
+	padding: 0px;
 	animation: ws_active 20s ease-in-out 1;
 	transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 	-webkit-box-shadow: 0px 0px 47px -10px @color0;
@@ -113,7 +113,7 @@
 	border: none;
 }
 
-/* Avoid 'annoying' backgroud */
+/* Avoid 'annoying' background */
 .scrollbar,
 .blank-window {  
 	background: transparent;  
@@ -128,7 +128,7 @@
 	border-radius: 12px;  
 	border: 2px solid @color10;
 	box-shadow: 0 2px 8px 0 @color0;   
-	margin: 18px;
+	margin: 10px;
 	padding: 10px;
 }
 
@@ -237,29 +237,6 @@ trough {
 
 /* WIDGETS --------------------------------------------------------------------------- */
 
-/* Notification clear button */
-.widget-title {
-	font-size: 1.2em;
-	margin: 2px;
-}
-
-.widget-title button {
-	border-radius: 24px;
-	padding: 4px 16px;
-	border: 1.5px solid @color6;
-}
-
-.widget-title button:hover {
-	background-color: alpha(@color4, .2);
-	border: 1.5px solid @color12;
-	color: @color5;
-}
-
-.widget-title button:active {
-	background-color: alpha(@color13, .2);
-	color: @color13;
-}
-
 /* Do not disturb */
 .widget-dnd {
 	margin: 8px 2px;
@@ -268,26 +245,28 @@ trough {
 
 .widget-dnd > switch {
 	font-size: initial;
-	border-radius: 8px;
-	border: 2px solid @color1;
+	border-radius: 14px;
+	background: @color4;
+	border: 2px solid @color4;
 	box-shadow: none;
+	transition: all 0.2s ease;
 }
 
 .widget-dnd > switch:hover {
-	background: alpha(@foreground, .2);
+	background: alpha(@color4, .8);
 }
 
 .widget-dnd > switch:checked {
-	background: @color1;
+	background: @color4;
 }
 
 .widget-dnd > switch:checked:hover {
-	background: alpha(@color1, .8);
+	background: alpha(@color4, .8);
 }
 
 .widget-dnd > switch slider {
-	background: @foreground;
-	border-radius: 6px;
+	background: @color12;
+	border-radius: 14px;
 }
 
 /* Buttons menu */
@@ -361,6 +340,7 @@ trough slider {
 	border-radius: 20px;
 
 }
+
 trough highlight:hover {
 	padding: 2px;
 	background: @color5;
@@ -375,17 +355,5 @@ trough highlight:hover {
 	font-size: 45px;
 	margin-left: 10px;
 	margin-right: 10px;
-	border: 0px solid transparent;
-}
-
-
-.widget-backlight {
-	padding: 20px 10px;
-	background-color: alpha(@background, 0.0);
-	font-size: 15px;
-	margin-top: -8px;
-	margin-left: 10px;
-	margin-right: 10px;
-	border-radius: 0px 0px 20px 20px;
 	border: 0px solid transparent;
 }
