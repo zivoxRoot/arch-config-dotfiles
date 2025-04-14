@@ -48,6 +48,7 @@ ripgrep
 swaync
 swww
 tealdeer
+telegram-deskstop
 timeshift
 tmux
 trash-cli
