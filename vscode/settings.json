@@ -3,12 +3,8 @@
   "editor.fontFamily": "'CaskaydiaCove Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
   "editor.fontLigatures": true,
   "terminal.integrated.fontLigatures.enabled": true,
-  "telemetry.telemetryLevel": "off",
   "workbench.tips.enabled": false,
   "workbench.startupEditor": "none",
-  "editor.fontSize": 16,
-  "editor.lineHeight": 26,
-  "editor.detectIndentation": false,
   "editor.wordWrap": "on",
   "workbench.editor.wrapTabs": true,
   "editor.cursorBlinking": "expand",
@@ -46,5 +42,12 @@
   "workbench.colorTheme": "Wal",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "window.commandCenter": false,
-  "animations.Enabled": true
+  "animations.Enabled": true,
+  "editor.lineHeight": 26,
+  "breadcrumbs.enabled": false,
+  "[shellscript]": {
+    "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
+  },
+  "window.menuBarVisibility": "compact",
+  "chat.commandCenter.enabled": false
 }

@@ -1,3 +1,3 @@
 # VSCode
 
-These files should be placed in **$HOME/.config/Code/User/**
+These files go in **$HOME/.config/Code/User/**
