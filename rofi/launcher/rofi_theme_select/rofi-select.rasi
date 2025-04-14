@@ -28,7 +28,7 @@ mainbox {
 
 listview {
     enabled:				true;
-    columns:				3;
+    columns:				4;
     lines:					1;
     cycle:					true;
     dynamic:				false;

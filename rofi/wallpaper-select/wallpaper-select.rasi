@@ -53,7 +53,7 @@ element {
 }
 
 element-icon {
-    size:					33%;
+    size:					40%;
     cursor:					inherit;
     border-radius:			0px;
     background-color:		transparent;
