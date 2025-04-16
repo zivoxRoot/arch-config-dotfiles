@@ -2,6 +2,7 @@ bibata-cursor-theme-bin
 ghcup-hs-bin
 hyprshot-git
 krabby-bin
+mediawriter
 oh-my-posh-bin
 paru
 paru-debug
