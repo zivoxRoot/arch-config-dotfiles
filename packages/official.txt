@@ -46,6 +46,7 @@ qt6-wayland
 rofi-wayland
 rustlings
 ripgrep
+satty
 swaync
 swww
 tealdeer
