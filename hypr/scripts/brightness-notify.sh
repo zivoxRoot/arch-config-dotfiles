@@ -11,5 +11,5 @@ TIMEOUT=1500  # Notification timeout in milliseconds
 MESSAGE="Brightness: ${BRIGHTNESS}%"
 
 # Send or update notification
-notify-send -r $NOTIF_ID -u $URGENCY -t $TIMEOUT -i $ICON \
+notify-send -h int:transient:1 -r $NOTIF_ID -u $URGENCY -t $TIMEOUT -i $ICON \
     -h int:value:$BRIGHTNESS -h string:synchronous:brightness "$MESSAGE"

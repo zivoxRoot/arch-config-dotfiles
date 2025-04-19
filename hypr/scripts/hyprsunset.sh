@@ -19,5 +19,5 @@ else
 fi
 
 # Send or update notification
-notify-send -r $NOTIF_ID -u $URGENCY -t $TIMEOUT -i $ICON \
+notify-send -h int:transient:1 -r $NOTIF_ID -u $URGENCY -t $TIMEOUT -i $ICON \
     -h string:synchronous:hyprsunset "$MESSAGE"
