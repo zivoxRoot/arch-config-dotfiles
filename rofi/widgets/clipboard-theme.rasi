@@ -2,11 +2,11 @@
 @import "~/.cache/wal/colors-rofi-dark"
 
 configuration {
-	font:						"CaskaydiaCove Nerd Font Mono 14";
+	font:						"CaskaydiaCove Nerd Font Mono 10";
 	modi:                       "drun";
     show-icons:                 true;
-	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
-	window-format:              "{w}   {c}   {t}";
+    display-drun:               "";
+	drun-display-format:        "{name}";
 }
 
 window {
@@ -14,61 +14,65 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       800px;
+	height:						 450px;
+    width:                       300px;
     x-offset:                    0px;
     y-offset:                    0px;
 
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
+    border:                      0px solid;
     border-radius:               12px;
     cursor:                      "default";
-    background-image:            url("~/.cache/current_wallpaper/current.jpg", width);
 }
 
 mainbox {
     enabled:                     true;
-    spacing:                     20px;
-    padding:                     40px;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
     background-color:            transparent;
     children:                    [ "inputbar", "listview" ];
 }
 
 inputbar {
-	transparency:				 "real";
-	background:					 transparent;
     enabled:                     true;
     spacing:                     10px;
-    margin:                      0px 0px 0px 0px;
+    margin:                      0px;
     padding:                     15px;
-    border-radius:               12px;
-    children:                    [ "textbox-prompt-colon", "entry" ];
+    border:                      0px solid;
+    border-radius:               0px;
+    children:                    [ "prompt", "entry" ];
 }
 
+prompt {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    padding:                     8px 11px;
-    border-radius:               8px;
-    text-color:                  black;
+    str:                         "::";
+    background-color:            inherit;
+    text-color:                  inherit;
 }
 entry {
     enabled:                     true;
-    padding:                     8px 12px;
-    border:                      0px;
-    background-color:            transparent;
-    text-color:                  white;
+    background-color:            inherit;
+    text-color:                  inherit;
     cursor:                      text;
     placeholder:                 "Search";
     placeholder-color:           inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.0;
 }
 
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       8;
+    lines:                       12;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -77,35 +81,35 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     10px;
-    margin:                      0px 0px 0px 0px;
-    padding:                     10px;
-    border-radius:               12px;
+    spacing:                     2px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    background-color:            transparent;
     cursor:                      "default";
 }
 
 element {
     enabled:                     true;
-    spacing:                     10px;
+    spacing:                     2px;
     margin:                      0px;
     padding:                     8px;
-    border:                      0px;
-    border-radius:               10px;
-    border-color:                white;
+    border:                      0px solid;
+    border-radius:               0px;
     background-color:            transparent;
     cursor:                      pointer;
 }
-element selected.normal {
-    text-color:                  white;
-}
 element-icon {
     background-color:            transparent;
-    size:                        32px;
+    text-color:                  inherit;
+    size:                        20px;
     cursor:                      inherit;
 }
 element-text {
-    background-color:            inherit;
+    background-color:            transparent;
     text-color:                  inherit;
+    highlight:                   inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
     horizontal-align:            0.0;

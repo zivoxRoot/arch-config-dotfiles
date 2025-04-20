@@ -15,3 +15,7 @@ The rofi launcher is set in **./launcher/**, more informations at **./launcher/R
 ## Wallpaper Selector
 
 The wallpaper selector is set in **./wallpaper-select/**, more informations at **./wallpaper-select/README.md**
+
+## Widgets
+
+All other usages of rofi, like the clipboard manager.
