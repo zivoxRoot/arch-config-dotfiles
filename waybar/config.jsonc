@@ -4,7 +4,6 @@
 	"layer": "top",
 	"modules-left": [ "clock" ],
 	"modules-center": [ "hyprland/workspaces" ],
-	// "modules-right": [ "custom/notification", "group/net", "backlight", "custom/hyprsunset", "wireplumber", "battery" ],
 	"modules-right": [ "custom/notification", "group/net", "group/luminosity", "wireplumber", "battery" ],
 
 	// Clock
@@ -57,7 +56,7 @@
 
 	// Network
 	"network": {
-		"format-wifi": "{icon}   {signalStrength}%",
+		"format-wifi": "{icon}    {signalStrength}%",
 		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
 		"format-ethernet": "󰈀",
 		"format-linked": "{ifname} 󰈀",
@@ -95,9 +94,10 @@
 	// Luminosity
 	"backlight": {
 		"device": "amd_backlight",
-		"format": "{icon}",
+		"format": "{icon}    {percent}",
 		"format-icons": ["󰃚", "󰃝", "󰃟", "󰃠"],
-		"tooltip": false
+		"tooltip": true,
+		"tooltip-format": "Screen luminosity"
 	},
 
 	// Hyprsunset
@@ -105,12 +105,13 @@
         "format": "{}",
         "exec": "~/.config/waybar/check-hyprsunset.sh",
         "interval": 1,  // Update every seconds
-		"tooltip": false,
+		"tooltip": true,
+		"tooltip-format": "Dark/Light mode"
     },
 
 	// Volume
 	"wireplumber": {
-		"format": " {volume}%  {icon} ",
+		"format": " {icon}    {volume}% ",
 		"format-muted": " ",
 		"format-icons": ["", "", ""],
 		"tooltip": false
@@ -123,7 +124,7 @@
 			"warning": 30,
 			"critical": 15
 		},
-		"format": "{icon}   {capacity}%",
+		"format": "{icon}    {capacity}%",
 		"format-icons": ["", "", "", "", ""],
 		"format-charging": "{capacity}% 󰂄",
 		"max-length": 25,
