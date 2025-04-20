@@ -28,7 +28,7 @@ mainbox {
 
 listview {
     enabled:				true;
-    columns:				4;
+    columns:				2;
     lines:					1;
     cycle:					true;
     dynamic:				false;
@@ -46,7 +46,7 @@ element {
     orientation:			vertical;
     spacing:				0px;
     padding:				0px;
-	margin: 				2% 1%;
+	margin: 				6% 5%;
     border-radius:			20px;
     cursor:					pointer;
     background-color:		transparent;
