@@ -43,4 +43,9 @@ makepkg -si
 - Change shell to zsh with `chsh -s /bin/zsh`
 - Reboot and open a terminal for zsh to start and install its dependencies
 
+### VS Code
+- Copy **vscode/keybindings.json** into **~/.config/Code/User**
+- Copy **vscode/settings.json** into **~/.config/Code/User**
+- Run `xargs -n 1 code --install-extension < vscode/extensions.txt``
+
 Reboot and enjoy !
