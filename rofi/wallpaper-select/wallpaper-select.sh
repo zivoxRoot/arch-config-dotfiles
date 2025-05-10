@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# NOTE: Script inspird by JaKooLit (https://github.com/JaKooLit) and Abhra00 (https://github.com/Abhra00)
+#!/usr/bin/env bash
 
 # Wallpapers Path
 wallpapersDir="$HOME/Pictures/Wallpapers"
@@ -77,6 +75,7 @@ applyWallpaper() {
 	wal -i "${1}" -n --cols16
 
 	# Cache the current wallpaper for hyprlock and rofi to use it
+	mkdir $HOME/.cache/current_wallpaper
 	cp "${1}" "$HOME/.cache/current_wallpaper/current.jpg"
 
 	# Reload waybar
@@ -146,8 +145,15 @@ launchSelector() {
 main() {
 
 	# Ensure both folder exist
-	if [[ ! -d "$wallpapersDir" || ! -d "$iconsDir" ]]; then
-		notify-send "Wallpaper switcher" "One or both folders don't exist..."
+	# if [[ ! -d "$wallpapersDir" || ! -d "$iconsDir" ]]; then
+	# 	notify-send "Wallpaper switcher" "One or both folders don't exist..."
+	# 	exit 1
+	# fi
+	
+	# Ensure both folder exist
+	mkdir $HOME/.cache/$iconsDir
+	if [[ ! -d "$wallpapersDir" ]]; then
+		notify-send "Wallpaper switcher" "Put some JPG images in ~/Pictures/Wallpapers to get started"
 		exit 1
 	fi
 
