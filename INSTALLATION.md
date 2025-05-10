@@ -48,4 +48,10 @@ makepkg -si
 - Copy **vscode/settings.json** into **~/.config/Code/User**
 - Run `xargs -n 1 code --install-extension < vscode/extensions.txt``
 
+### Manual steps
+
+#### Pywalfox
+- Add pywalfox to zen browser (or any firefox based browser)
+- Click on the freshly installed extensions and click "fetch pywal colors"
+
 Reboot and enjoy !
