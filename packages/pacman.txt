@@ -37,6 +37,7 @@ ttf-cascadia-code-nerd
 ttf-cascadia-mono-nerd
 ttf-jetbrains-mono-nerd
 ttf-meslo-nerd
+trash-cli
 waybar
 wireless_tools
 wl-clipboard

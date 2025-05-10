@@ -28,20 +28,26 @@ makepkg -si
 - Use `wal -i youWallpaper` to generate a color config
 - Copy **hypr** into **~/.config/hypr**
 
-### Kitty & waybar & bat & fastfetch & swaync & rofi & nvim
+### Kitty & waybar & bat & fastfetch & swaync & rofi & nvim & wlogout
 - Copy **kitty** to **~/.config/kitty**
 - Copy **waybar** to **~/.config/waybar**
 - Copy **bat** to **~/.config/bat**
+- Copy **fastfetch** to **~/.config/fastfetch**
 - Copy **swaync** to **~/.config/swaync**
+    - Reload swaync with `pkill swaync && swaync &`
 - Copy **rofi** to **~/.config/rofi**
 - Copy **nvim** to **~/.config/nvim**
+- Copy **wlogout** to **~/.config/wlogout**
 
-### Ohmyposh & zsh
+### Ohmyposh & zsh & tmux
 - Copy **ohmyposh** to **~/.config/ohmyposh**
 - Copy **.zshrc** to **~**
 - Copy **zsh** to **~/.config/zsh**
 - Change shell to zsh with `chsh -s /bin/zsh`
-- Reboot and open a terminal for zsh to start and install its dependencies
+- Type `zsh` to use zsh in the current session
+    - Reboot and open a terminal for zsh to start and install its dependencies
+- Copy **tmux** to **~/.config/tmux**
+- Run `tmux source-file ~/.config/tmux/tmux.conf`
 
 ### VS Code
 - Copy **vscode/keybindings.json** into **~/.config/Code/User**
@@ -53,5 +59,9 @@ makepkg -si
 #### Pywalfox
 - Add pywalfox to zen browser (or any firefox based browser)
 - Click on the freshly installed extensions and click "fetch pywal colors"
+
+### Following steps
+- Add an ad blocker to the browser (e.g. uBlock Origin)
+- Create a new ssh key and add it to your github account and test it
 
 Reboot and enjoy !
