@@ -20,6 +20,9 @@ makepkg -si
 
 ## Copy the configuration
 
+### Wallpapers
+- Copy **Wallpapers** into **~/Pictures/Wallpapers**
+
 ### Wal & hypr
 - Copy **wal** into **~/.config/wal**
 - Use `wal -i youWallpaper` to generate a color config
