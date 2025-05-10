@@ -44,3 +44,4 @@ yazi
 zathura
 zathura-pdf-poppler
 zoxide
+zsh
