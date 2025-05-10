@@ -60,8 +60,16 @@ makepkg -si
 - Add pywalfox to zen browser (or any firefox based browser)
 - Click on the freshly installed extensions and click "fetch pywal colors"
 
+#### Telegram
+- Go in settings > Chat settings > Chat wallpaper > Choose from file, then pick the file at **~/.cache/walogram/wal.tdesktop-theme**
+
 ### Following steps
 - Add an ad blocker to the browser (e.g. uBlock Origin)
 - Create a new ssh key and add it to your github account and test it
+- Add your liked apps (, etc...)
 
 Reboot and enjoy !
+
+## Other things
+- Enable bluetooth service : `sudo systemctl enable bluetooth.service & sudo systemctl start bluetooth.service`
+- Remove [firefox], dolphin, 
