@@ -9,7 +9,6 @@ esbenp.prettier-vscode
 exodiusstudios.comment-anchors
 fill-labs.dependi
 formulahendry.auto-close-tag
-foxundermoon.shell-format
 kamikillerto.vscode-colorize
 mhutchie.git-graph
 patbenatar.advanced-new-file
