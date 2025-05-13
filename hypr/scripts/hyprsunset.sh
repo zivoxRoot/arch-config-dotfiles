@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
 # Set notification parameters
-NOTIF_ID=1002  # Unique ID for hyprsunset notification
+NOTIF_ID=1002     # Unique ID for hyprsunset notification
 URGENCY="normal"
-TIMEOUT=1500   # Notification timeout in milliseconds
+TIMEOUT=1500      # Notification timeout in milliseconds
 
 # Check if hyprsunset is running
 if pgrep -x "hyprsunset" > /dev/null; then
     # Hyprsunset is running, kill it
     pkill -x "hyprsunset"
-    MESSAGE="Hyprsunset deactivated"
+    MESSAGE="Night light deactivated"
     ICON="weather-clear-symbolic"
 else
     # Hyprsunset is not running, start it
     hyprsunset &
-    MESSAGE="Hyprsunset activated"
+    MESSAGE="Night light activated"
     ICON="weather-clear-night-symbolic"
 fi
 
