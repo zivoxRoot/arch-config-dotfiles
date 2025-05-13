@@ -69,3 +69,6 @@ fi
 # Print a pokemon when opening the terminal
 # krabby random --no-title
 export PATH="$INSTALL_DIR:$PATH"
+
+# Use neovim as manpager
+export MANPAGER="nvim +Man!"
