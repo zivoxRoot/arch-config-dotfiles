@@ -45,9 +45,8 @@
   "animations.Enabled": true,
   "editor.lineHeight": 26,
   "breadcrumbs.enabled": false,
-  "[shellscript]": {
-    "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
-  },
   "window.menuBarVisibility": "compact",
-  "chat.commandCenter.enabled": false
+  "chat.commandCenter.enabled": false,
+  "editor.minimap.enabled": true,
+  "markdown.preview.fontFamily": "'CaskaydiaCove Nerd Font Mono', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif"
 }
