@@ -202,7 +202,7 @@ zsh
 
 # Copy tmux
 copy_dir "${BASE_DIR}/tmux" "${CONFIG_DIR}" "tmux"
-tmux source-file "${CONFIG_DIR}/tmux/tmux.conf"
+# tmux source-file "${CONFIG_DIR}/tmux/tmux.conf"
 
 # Copy VS Codium files
 copy_dir "${BASE_DIR}/vscodium/settings.json" "${CONFIG_DIR}/VSCodium/User/" "settings.json"
@@ -224,6 +224,9 @@ xargs -n 1 codium --install-extension <"${BASE_DIR}/vscodium/extensions.txt"
 log_message "Closing VSCodium instance..."
 kill "$VSCODIUM_PID" 2>/dev/null
 # NOTE: test
+
+# Enable bluetooth service
+sudo systemctl enable bluetooth.service
 
 log_message "Installation and configuration process completed successfully."
 log_message "Please reboot your machine with 'sudo reboot now'"
