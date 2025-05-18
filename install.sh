@@ -145,7 +145,8 @@ copy_dir "$WALLPAPERS_SRC" "$WALLPAPERS_DEST" "Wallpapers"
 copy_dir "$WAL_SRC" "$WAL_DEST" "wal"
 
 # Create first wallpaper
-swww-daemon # Start the swww daemon
+# Start the swww daemon
+swww-daemon &
 first_wallpaper=$(ls -1 $WALLPAPER_DEST | head -n 1)
 swww img "$WALLPAPER_DEST"/"$first_wallpaper"
 wal -i "$WALLPAPER_DEST"/"$first_wallpaper" -n --cols16
