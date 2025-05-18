@@ -187,4 +187,17 @@ copy_dir "${BASE_DIR}/nvim" "${CONFIG_DIR}" "nvim"
 # Copy wlogout
 copy_dir "${BASE_DIR}/wlogout" "${CONFIG_DIR}" "wlogout"
 
+# Copy ohmyposh
+copy_dir "${BASE_DIR}/ohmyposh" "${CONFIG_DIR}" "ohmyposh"
+
+# Copy zsh
+copy_dir "${BASE_DIR}/zsh" "${CONFIG_DIR}" "zsh"
+
+# Copy tmux
+copy_dir "${BASE_DIR}/tmux" "${CONFIG_DIR}" "tmux"
+tmux source-file "${CONFIG_DIR}/tmux/tmux.conf"
+
+# Copy zsh
+copy_dir "${BASE_DIR}/zsh" "$HOME_DIR" ".zshrc"
+
 log_message "Installation and configuration process completed successfully."
