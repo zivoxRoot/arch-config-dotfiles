@@ -144,14 +144,30 @@ copy_dir "$WALLPAPERS_SRC" "$WALLPAPERS_DEST" "Wallpapers"
 # Copy wal
 copy_dir "$WAL_SRC" "$WAL_DEST" "wal"
 
+# Start swww daemon and set first wallpaper
+log_message "Starting swww daemon and setting wallpaper..."
+pkill swww || true
+swww-daemon &
+sleep 1
+
+# first_wallpaper=$(find "$WALLPAPERS_DEST" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" \) | sort | head -n 1)
+first_wallpaper=$(find "$WALLPAPERS_DEST" -maxdepth 1 -type f \( -iname "*.jpg" \) | sort | head -n 1)
+if [[ -n "$first_wallpaper" ]]; then
+    log_message "Setting wallpaper: ${first_wallpaper##*/}"
+    swww img "$first_wallpaper"
+    wal -i "$first_wallpaper" -n --cols16
+else
+    log_message "No images found in $WALLPAPERS_DEST."
+fi
+
 # Create first wallpaper
-echo "Starting swww daemon..."
-pkill swww && swww-daemon &
-first_wallpaper=$(ls -1 $WALLPAPER_DEST | head -n 1)
-echo "first wallpaper =  ${first_wallpaper}"
-echo "Trying to set ${WALLPAPER_DEST}/${first_wallpaper} as wallpaper"
-swww img "$WALLPAPERS_DEST"/"$first_wallpaper"
-wal -i "$WALLPAPERS_DEST"/"$first_wallpaper" -n --cols16
+# echo "Starting swww daemon..."
+# pkill swww && swww-daemon &
+# first_wallpaper=$(ls -1 $WALLPAPER_DEST | head -n 1)
+# echo "first wallpaper =  ${first_wallpaper}"
+# echo "Trying to set ${WALLPAPER_DEST}/${first_wallpaper} as wallpaper"
+# swww img "$WALLPAPERS_DEST"/"$first_wallpaper"
+# wal -i "$WALLPAPERS_DEST"/"$first_wallpaper" -n --cols16
 
 # Delete the original hypr folder and copy the new one
 rm -r "$HYPR_DEST" && copy_dir "$HYPR_SRC" "$HYPR_DEST" "hypr"
