@@ -145,11 +145,13 @@ copy_dir "$WALLPAPERS_SRC" "$WALLPAPERS_DEST" "Wallpapers"
 copy_dir "$WAL_SRC" "$WAL_DEST" "wal"
 
 # Create first wallpaper
-# Start the swww daemon
-swww-daemon &
+echo "Starting swww daemon..."
+pkill swww && swww-daemon &
 first_wallpaper=$(ls -1 $WALLPAPER_DEST | head -n 1)
-swww img "$WALLPAPER_DEST"/"$first_wallpaper"
-wal -i "$WALLPAPER_DEST"/"$first_wallpaper" -n --cols16
+echo "first wallpaper =  ${first_wallpaper}"
+echo "Trying to set ${WALLPAPER_DEST}/${first_wallpaper} as wallpaper"
+swww img "$WALLPAPERS_DEST"/"$first_wallpaper"
+wal -i "$WALLPAPERS_DEST"/"$first_wallpaper" -n --cols16
 
 # Delete the original hypr folder and copy the new one
 rm -r "$HYPR_DEST" && copy_dir "$HYPR_SRC" "$HYPR_DEST" "hypr"
