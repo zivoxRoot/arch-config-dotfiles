@@ -164,27 +164,27 @@ fi
 rm -r "$HYPR_DEST" && copy_dir "$HYPR_SRC" "$HYPR_DEST" "hypr"
 
 # Copy kitty
-copy_dir "${BASE_DIR}/kitty" "${CONFIG_DIR}/kitty" "kitty"
+copy_dir "${BASE_DIR}/kitty" "${CONFIG_DIR}" "kitty"
 
 # Copy waybar
-copy_dir "${BASE_DIR}/waybar" "${CONFIG_DIR}/waybar" "waybar"
+copy_dir "${BASE_DIR}/waybar" "${CONFIG_DIR}" "waybar"
 
 # Copy bat
-copy_dir "${BASE_DIR}/bat" "${CONFIG_DIR}/bat" "bat"
+copy_dir "${BASE_DIR}/bat" "${CONFIG_DIR}" "bat"
 
 # Copy fastfetch
-copy_dir "${BASE_DIR}/fastfetch" "${CONFIG_DIR}/fastfetch" "fastfetch"
+copy_dir "${BASE_DIR}/fastfetch" "${CONFIG_DIR}" "fastfetch"
 
 # Copy swaync
-copy_dir "${BASE_DIR}/swaync" "${CONFIG_DIR}/swaync" "swaync"
+copy_dir "${BASE_DIR}/swaync" "${CONFIG_DIR}" "swaync"
 
 # Copy rofi
-copy_dir "${BASE_DIR}/rofi" "${CONFIG_DIR}/rofi" "rofi"
+copy_dir "${BASE_DIR}/rofi" "${CONFIG_DIR}" "rofi"
 
 # Copy nvim
-copy_dir "${BASE_DIR}/nvim" "${CONFIG_DIR}/nvim" "nvim"
+copy_dir "${BASE_DIR}/nvim" "${CONFIG_DIR}" "nvim"
 
 # Copy wlogout
-copy_dir "${BASE_DIR}/wlogout" "${CONFIG_DIR}/wlogout" "wlogout"
+copy_dir "${BASE_DIR}/wlogout" "${CONFIG_DIR}" "wlogout"
 
 log_message "Installation and configuration process completed successfully."
