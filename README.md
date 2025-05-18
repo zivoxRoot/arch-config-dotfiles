@@ -1,6 +1,6 @@
 # Installation
 
-There is no installation script at this point, so here are the steps to follow :
+There is a minimal installation script at this point but it may not work, so here are the steps to follow to install manually :
 These steps are to perform with a minimal arch linux + hyprland config (e.g. after running archinstall)
 
 ## Install necessary packages
