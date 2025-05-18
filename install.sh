@@ -2,7 +2,6 @@
 
 # Exit on any error and enable debug tracing
 set -e
-set -x
 
 # Define variables with fallbacks
 HOME_DIR="${HOME_DIR:-$HOME}"
@@ -145,7 +144,12 @@ copy_dir "$WALLPAPERS_SRC" "$WALLPAPERS_DEST" "Wallpapers"
 # Copy wal
 copy_dir "$WAL_SRC" "$WAL_DEST" "wal"
 
-# Copy hypr
-copy_dir "$HYPR_SRC" "$HYPR_DEST" "hypr"
+# Create first wallpaper
+first_wallpaper=$(ls -1 $WALLPAPER_DEST | head -n 1)
+swww img "$WALLPAPER_DEST"/"$first_wallpaper"
+wal -i "$WALLPAPER_DEST"/"$first_wallpaper" -n --cols16
+
+# Delete the original hypr folder and copy the new one
+rm -r "$HYPR_DEST" && copy_dir "$HYPR_SRC" "$HYPR_DEST" "hypr"
 
 log_message "Installation and configuration process completed successfully."
