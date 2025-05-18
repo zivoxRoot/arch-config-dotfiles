@@ -6,7 +6,7 @@ no-more-secrets-git
 oh-my-posh-bin
 python-pywal16
 python-pywalfox
-visual-studio-code-bin
+vscodium-bin
 walogram-git
 wlogout
 zen-browser-bin
