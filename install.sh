@@ -197,7 +197,19 @@ copy_dir "${BASE_DIR}/zsh" "${CONFIG_DIR}" "zsh"
 copy_dir "${BASE_DIR}/tmux" "${CONFIG_DIR}" "tmux"
 tmux source-file "${CONFIG_DIR}/tmux/tmux.conf"
 
-# Copy zsh
-copy_dir "${BASE_DIR}/zsh" "$HOME_DIR" ".zshrc"
+# Copy zshrc
+copy_dir "${BASE_DIR}/.zshrc" "${HOME_DIR}" ".zshrc"
+
+# Change shell to zsh
+echo "Changing shell to zsh..."
+chsh -s /bin/zsh
+
+# Copy VS Codium files
+copy_dir "${BASE_DIR}/vscodium/settings.json" "${CONFIG_DIR}/VSCodium/User/" "settings.json"
+copy_dir "${BASE_DIR}/vscodium/keybindings.json" "${CONFIG_DIR}/VSCodium/User/" "keybindings.json"
+# Install VS Codium extensions
+echo "Installing VS Codium extensions
+xargs -n 1 codium --install-extensions < "${BASE_DIR}/vscodium/extensions.txt"
 
 log_message "Installation and configuration process completed successfully."
+log_message "Please reboot your machine with 'sudo reboot now'"
