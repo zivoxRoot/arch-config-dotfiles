@@ -198,32 +198,25 @@ copy_dir "${BASE_DIR}/.zshrc" "${HOME_DIR}" ".zshrc"
 
 # Change shell to zsh
 chsh -s /bin/zsh
-zsh
 
 # Copy tmux
 copy_dir "${BASE_DIR}/tmux" "${CONFIG_DIR}" "tmux"
-# tmux source-file "${CONFIG_DIR}/tmux/tmux.conf"
 
 # Copy VS Codium files
 copy_dir "${BASE_DIR}/vscodium/settings.json" "${CONFIG_DIR}/VSCodium/User/" "settings.json"
 copy_dir "${BASE_DIR}/vscodium/keybindings.json" "${CONFIG_DIR}/VSCodium/User/" "keybindings.json"
-# Install VS Codium extensions
-# echo "Installing VS Codium extensions"
-# xargs -n 1 codium --install-extension <"${BASE_DIR}/vscodium/extensions.txt"
 
-# NOTE: test
 # Launch VSCodium and store its PID
 codium &>/dev/null &
 VSCODIUM_PID=$!
-
 sleep 3
 
+# Install VS Codium extensions
 xargs -n 1 codium --install-extension <"${BASE_DIR}/vscodium/extensions.txt"
 
 # Close the VSCodium instance
 log_message "Closing VSCodium instance..."
 kill "$VSCODIUM_PID" 2>/dev/null
-# NOTE: test
 
 # Enable bluetooth service
 sudo systemctl enable bluetooth.service
