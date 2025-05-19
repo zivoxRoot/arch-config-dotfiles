@@ -145,10 +145,10 @@ copy_dir "$WALLPAPERS_SRC" "$WALLPAPERS_DEST" "Wallpapers"
 copy_dir "$WAL_SRC" "$WAL_DEST" "wal"
 
 # Start swww daemon and set first wallpaper
-log_message "Starting swww daemon and setting wallpaper..."
-pkill swww || true
-swww-daemon &
-sleep 1
+# log_message "Starting swww daemon and setting wallpaper..."
+# pkill swww || true
+# swww-daemon &
+# sleep 1
 
 # first_wallpaper=$(find "$WALLPAPERS_DEST" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" \) | sort | head -n 1)
 first_wallpaper=$(find "$WALLPAPERS_DEST" -maxdepth 1 -type f \( -iname "*.jpg" \) | sort | head -n 1)
