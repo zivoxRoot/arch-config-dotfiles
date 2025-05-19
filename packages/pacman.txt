@@ -20,7 +20,9 @@ lazygit
 less
 man-pages
 nautilus
+networkmanager
 network-manager-applet
+nm-connection-editor
 neovim
 obsidian
 onefetch
@@ -38,6 +40,7 @@ ttf-cascadia-mono-nerd
 ttf-jetbrains-mono-nerd
 ttf-meslo-nerd
 trash-cli
+upower
 waybar
 wireless_tools
 wl-clipboard
