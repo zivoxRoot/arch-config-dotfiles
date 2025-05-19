@@ -196,8 +196,17 @@ copy_dir "${BASE_DIR}/zsh" "${CONFIG_DIR}" "zsh"
 # Copy zshrc
 copy_dir "${BASE_DIR}/.zshrc" "${HOME_DIR}" ".zshrc"
 
+# Change shell to zsh TODO: Check the current shell before that
+# chsh -s /bin/zsh
 # Change shell to zsh
-chsh -s /bin/zsh
+# Check the current shell before that
+current_shell=$(getent passwd "$USER" | cut -d: -f7)
+if [ "$current_shell" != "/bin/zsh" ]; then
+    chsh -s /bin/zsh
+    log_message "Shell changed to /bin/zsh. Please log out and log back in for the change to take effect."
+else
+    log_message "Current shell is already /bin/zsh. No action taken."
+fi
 
 # Copy tmux
 copy_dir "${BASE_DIR}/tmux" "${CONFIG_DIR}" "tmux"
@@ -216,7 +225,7 @@ xargs -n 1 codium --install-extension <"${BASE_DIR}/vscodium/extensions.txt"
 
 # Close the VSCodium instance
 log_message "Closing VSCodium instance..."
-(kill "$VSCODIUM_PID" 2>/dev/null)
+kill "$VSCODIUM_PID" 2>/dev/null &
 
 # Enable bluetooth service
 sudo systemctl enable bluetooth.service
