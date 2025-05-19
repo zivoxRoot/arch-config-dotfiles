@@ -18,7 +18,7 @@ rofiArgs="rofi -show -dmenu -theme $rofiThemeFile"
 
 # getPics retrieves image files as a list
 getPics() {
-	PICS=($(find -L "${iconsDir}" -type f \( -iname \*.jpg \) | sort ))
+	PICS=($(find -L "${iconsDir}" -type f \( -iname \*.jpg \) | sort))
 }
 
 # updateIconFolder checks that all wallpapers in $wallpapersDir have a corresponding icon in $iconsDir and that all icons have a corresponding wallpaper
@@ -26,7 +26,7 @@ updateIconFolder() {
 
 	# Loop through the $wallpapersDir
 	for file in "$wallpapersDir"/*.jpg; do
-		[[ -e "$file" ]] || continue; # Skip if no jpg file being found
+		[[ -e "$file" ]] || continue # Skip if no jpg file being found
 
 		# Extract filename
 		filename=$(basename "$file")
@@ -112,7 +112,6 @@ displayWallpapers() {
 	done
 }
 
-
 # Execution
 launchSelector() {
 	choice=$(displayWallpapers | ${rofiArgs})
@@ -145,17 +144,19 @@ launchSelector() {
 main() {
 
 	# Ensure both folder exist
-	# if [[ ! -d "$wallpapersDir" || ! -d "$iconsDir" ]]; then
-	# 	notify-send "Wallpaper switcher" "One or both folders don't exist..."
-	# 	exit 1
-	# fi
-	
-	# Ensure both folder exist
-	mkdir $HOME/.cache/$iconsDir
-	if [[ ! -d "$wallpapersDir" ]]; then
-		notify-send "Wallpaper switcher" "Put some JPG images in ~/Pictures/Wallpapers to get started"
+	if [[ ! -d "$wallpapersDir" || ! -d "$iconsDir" ]]; then
+		notify-send "Wallpaper switcher" "One or both folders don't exist..."
 		exit 1
 	fi
+
+	# Ensure both folder exist
+	# if [[ ! -d "$iconsDir" ]]; then
+	# mkdir $HOME/.cache/$iconsDir
+	# fi
+	# if [[ ! -d "$wallpapersDir" ]]; then
+	# notify-send "Wallpaper switcher" "Put some JPG images in ~/Pictures/Wallpapers to get started"
+	# exit 1
+	# fi
 
 	# If swww exists, start it
 	if command -v swww &>/dev/null; then
@@ -163,7 +164,7 @@ main() {
 	fi
 
 	# Check if rofi is already running
-	if pidof rofi > /dev/null; then
+	if pidof rofi >/dev/null; then
 		pkill rofi
 		exit 0
 	fi

@@ -84,3 +84,4 @@ Reboot and enjoy !
 
 - Enable bluetooth service : `sudo systemctl enable bluetooth.service & sudo systemctl start bluetooth.service`
 - Remove [firefox], dolphin,
+- Add necessary lines to .gitconfig
