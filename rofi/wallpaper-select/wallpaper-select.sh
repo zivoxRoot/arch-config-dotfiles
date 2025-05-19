@@ -176,5 +176,19 @@ main() {
 	launchSelector
 }
 
+# Check the necessary folders exist, and create them if they do not
+if [ ! -d "$wallpapersDir" ]; then
+	mkdir -p "$wallpapersDir"
+	log_message "Created folder: $wallpapersDir"
+else
+	log_message "Folder already exists: $wallpapersDir"
+fi
+if [ ! -d "$iconsDir" ]; then
+	mkdir -p "$iconsDir"
+	log_message "Created folder: $iconsDir"
+else
+	log_message "Folder already exists: $iconsDir"
+fi
+
 # Call the main function
 main
