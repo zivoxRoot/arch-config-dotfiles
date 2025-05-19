@@ -196,8 +196,6 @@ copy_dir "${BASE_DIR}/zsh" "${CONFIG_DIR}" "zsh"
 # Copy zshrc
 copy_dir "${BASE_DIR}/.zshrc" "${HOME_DIR}" ".zshrc"
 
-# Change shell to zsh TODO: Check the current shell before that
-# chsh -s /bin/zsh
 # Change shell to zsh
 # Check the current shell before that
 current_shell=$(getent passwd "$USER" | cut -d: -f7)

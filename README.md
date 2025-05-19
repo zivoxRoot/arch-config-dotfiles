@@ -14,7 +14,7 @@ cd ~/arch-config-dotfiles
 ./install.sh
 ```
 
-> **Notes** : This may open a VSCodium instance
+> **Notes** : This may open a VSCodium instance, just wait for the script to finish then close it
 > Follow the instructions, if prompted to remove a package, say "yes" (y)
 
 ### 2. Follow the installation steps yourself
