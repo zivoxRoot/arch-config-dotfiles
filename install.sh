@@ -216,7 +216,7 @@ xargs -n 1 codium --install-extension <"${BASE_DIR}/vscodium/extensions.txt"
 
 # Close the VSCodium instance
 log_message "Closing VSCodium instance..."
-kill "$VSCODIUM_PID" 2>/dev/null
+(kill "$VSCODIUM_PID" 2>/dev/null)
 
 # Enable bluetooth service
 sudo systemctl enable bluetooth.service
