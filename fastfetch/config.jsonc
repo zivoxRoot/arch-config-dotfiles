@@ -88,6 +88,12 @@
 			"text": "capacity=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null); echo ${capacity} %"
 		},
 		{
+            "type": "disk",
+            "format": "{1} / {2} ({3})",
+            "key": "  ♖ Disk",
+            "keyColor": "blue"
+        },
+		{
 			"type": "memory",
 			"key": "  󰏗 Memory ",
 			"keyColor": "magenta"
