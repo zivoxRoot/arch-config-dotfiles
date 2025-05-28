@@ -78,6 +78,10 @@ applyWallpaper() {
 	mkdir $HOME/.cache/current_wallpaper
 	cp "${1}" "$HOME/.cache/current_wallpaper/current.jpg"
 
+	# Copy the new theme file and reload the swaync theme
+	cp $HOME/.cache/wal/colors-waybar.css $HOME/.config/swaync/theme.css
+	swaync-client -rs &
+
 	# Reload waybar
 	pkill waybar && waybar &
 
@@ -95,10 +99,6 @@ applyWallpaper() {
 
 	# Copy the new theme file for zathura
 	cp $HOME/.cache/wal/zathurarc $HOME/.config/zathura/
-
-	# Copy the new theme file and reload the swaync theme
-	cp $HOME/.cache/wal/colors-waybar.css $HOME/.config/swaync/theme.css
-	swaync-client -rs
 
 	# Notify the user
 	wallpaper_name=$(basename "$file" | cut -d. -f1)
