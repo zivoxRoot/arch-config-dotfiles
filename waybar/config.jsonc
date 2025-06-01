@@ -4,7 +4,7 @@
 	"layer": "top",
 	"modules-left": [ "clock" ],
 	"modules-center": [ "hyprland/workspaces" ],
-	"modules-right": [ "custom/notification", "group/net", "group/luminosity", "wireplumber", "battery" ],
+	"modules-right": [ "custom/notification", "custom/kb_layout", "group/net", "group/luminosity", "wireplumber", "battery" ],
 
 	// Clock
 	"clock": {
@@ -19,7 +19,7 @@
 		"format-icons": {
 			"urgent": " ",
 			"active": " ",
-			"default": " "
+			"default": " ",
 		},
 	},
 
@@ -43,6 +43,13 @@
 		"on-click": "swaync-client -t -sw",
 		"on-click-right": "swaync-client -d -sw",
 		"escape": true
+	},
+
+	// Keyboard layout
+	"custom/kb_layout": {
+		"exec": "~/.config/hypr/scripts/keyboard_layout.sh",
+		"interval": 1,
+		"on-click": "~/.config/hypr/scripts/switch_layout.sh"
 	},
 
 	// Group net
@@ -102,12 +109,12 @@
 
 	// Hyprsunset
 	"custom/hyprsunset": {
-        "format": "{}",
-        "exec": "~/.config/waybar/check-hyprsunset.sh",
-        "interval": 1,  // Update every seconds
+		"format": "{}",
+		"exec": "~/.config/waybar/check-hyprsunset.sh",
+		"interval": 1,  // Update every seconds
 		"tooltip": true,
 		"tooltip-format": "Dark/Light mode"
-    },
+	},
 
 	// Volume
 	"wireplumber": {
