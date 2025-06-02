@@ -1,10 +1,12 @@
 acpi
 base
 bat
+bc
 blueman
 bluez-utils
 brightnessctl
 cliphist
+ddcutil
 eza
 fastfetch
 fzf
@@ -15,6 +17,7 @@ hypridle
 hyprland
 hyprlock
 hyprsunset
+jq
 kitty
 lazygit
 less
