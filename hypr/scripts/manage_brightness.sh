@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Configuration
 STEP=5 # Brightness adjustment step (percentage for laptop, units for external)
@@ -13,12 +13,8 @@ URGENCY="normal"
 TIMEOUT=1500 # Notification timeout in milliseconds
 MESSAGE="Brightness: ${BRIGHTNESS}%"
 
-# Function to send notification
+# Function to send or update notification
 notify_brightness() {
-    # local BRIGHTNESS=$1
-    # notify-send -t 3000 -a "Brightness" -h int:value:"$BRIGHTNESS" "Brightness: $BRIGHTNESS%"
-
-    # Send or update notification
     notify-send -h int:transient:1 -r $NOTIF_ID -u $URGENCY -t $TIMEOUT -i $ICON \
         -h int:value:$BRIGHTNESS -h string:synchronous:brightness "$MESSAGE"
 }
