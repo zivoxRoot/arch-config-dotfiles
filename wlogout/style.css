@@ -1,52 +1,87 @@
 /* Import pywal16 colors */
 @import "/home/theophile/.cache/wal/colors-waybar.css";
 
+/* General */
 * {
-	background-image: none;
-	box-shadow: none;
+  background-image: none;
+  box-shadow: none;
 }
 
 window {
-	background-color: rgba(12, 12, 12, 0.8);
+  background-color: rgba(12, 12, 12, 0.8);
 }
 
+/* Button */
 button {
-	border-radius: 15px;
-	margin: 10px;
-    border-color: black;
-	text-decoration-color: #FFFFFF;
-    color: @foreground;
-	background-color: @color1;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 20%;
+  color: @foreground;
+  font-size: 23px;
+
+  margin: 120px 0px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+
+  background-color: @color3;
+  border: none;
+  border-radius: 0px;
+  transition: 0.15s ease-in-out all;
 }
 
-button:focus, button:active, button:hover {
-	background-color: @color3;
-	outline-style: none;
+button:focus {
+  background-size: 25%;
+  background-color: @color5;
+  opacity: 0.5;
 }
 
+button:hover {
+  background-size: 35%;
+  background-color: @color5;
+  margin: 75px 0px;
+  border-radius: 50px;
+  opacity: 0.5;
+}
+
+/* Specific buttons */
 #lock {
-    background-image: image(url("./icons/lock.png"), url("./icons/lock.png"));
+  background-image: image(url("./icons/lock.png"), url("./icons/lock.png"));
 }
 
 #logout {
-    background-image: image(url("./icons/logout.png"), url("./icons/logout.png"));
+  background-image: image(url("./icons/logout.png"), url("./icons/logout.png"));
 }
 
 #suspend {
-    background-image: image(url("./icons/suspend.png"), url("./icons/suspend.png"));
+  border-radius: 50px 0px 0px 50px;
+  background-image: image(
+    url("./icons/suspend.png"),
+    url("./icons/suspend.png")
+  );
+}
+
+#suspend:hover {
+  border-radius: 50px;
 }
 
 #hibernate {
-    background-image: image(url("./icons/hibernate.png"), url("./icons/hibernate.png"));
+  background-image: image(
+    url("./icons/hibernate.png"),
+    url("./icons/hibernate.png")
+  );
 }
 
 #shutdown {
-    background-image: image(url("./icons/shutdown.png"), url("./icons/shutdown.png"));
+  background-image: image(
+    url("./icons/shutdown.png"),
+    url("./icons/shutdown.png")
+  );
 }
 
 #reboot {
-    background-image: image(url("./icons/reboot.png"), url("./icons/reboot.png"));
+  border-radius: 0px 50px 50px 0px;
+  background-image: image(url("./icons/reboot.png"), url("./icons/reboot.png"));
+}
+
+#reboot:hover {
+  border-radius: 50px;
 }
