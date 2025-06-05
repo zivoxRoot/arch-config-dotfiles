@@ -21,7 +21,8 @@ jq
 kitty
 lazygit
 less
-man-pages
+man-db
+mpv
 nautilus
 networkmanager
 network-manager-applet
