@@ -11,9 +11,9 @@ These steps are to perform with a minimal arch linux + hyprland config (e.g. aft
 
 ```Bash
 sudo pacman -S --needed base-devel
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
+git clone https://aur.archlinux.org/paru-bin.git
+cd paru-bin
+makepkg -rsi --noconfirm
 ```
 
 - go in **packages** and run `paru -S --needed -noconfirm - < aur.txt`
@@ -85,3 +85,22 @@ Reboot and enjoy !
 - Enable bluetooth service : `sudo systemctl enable bluetooth.service & sudo systemctl start bluetooth.service`
 - Remove [firefox], dolphin,
 - Add necessary lines to .gitconfig
+
+## Bug fixes
+
+### 1. Swww
+
+Since its 9.5 version, swww (wallpaper engine and daemon) doesn't work : it may work some times but most of the time it doesn't fill the full screen.
+To fix this issue you should remove the swww package, and clone the repo locally to compile it yourself :
+
+1. Go in https://github.com/LGFae/swww/ and click the **releases** tab : https://github.com/LGFae/swww/releases
+2. Scroll to the 9.4 release and download the compressed file
+3. Uncompress it and follow the indication in the swww's README to build the program
+4. Copy the files **target/release/swww** and the **target/release/swww-daemon** in **/usr/local/bin** :
+
+```bash
+sudo cp target/release/swww /usr/local/bin
+sudo cp target/release/swww-daemon /usr/local/bin
+```
+
+Restart the swww daemon and it should now work flawlessly !
