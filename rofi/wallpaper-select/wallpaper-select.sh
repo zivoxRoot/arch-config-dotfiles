@@ -74,6 +74,10 @@ applyWallpaper() {
 	# Set the pywal16 theme
 	wal -i "${1}" -n --cols16
 
+	# Notify the user
+	wallpaper_name=$(basename "$file" | cut -d. -f1)
+	notify-send -i "${file}" "Wallpaper-switcher" "Switching to ${wallpaper_name}"
+
 	# Cache the current wallpaper for hyprlock and rofi to use it
 	mkdir $HOME/.cache/current_wallpaper
 	cp "${1}" "$HOME/.cache/current_wallpaper/current.jpg"
@@ -99,10 +103,6 @@ applyWallpaper() {
 
 	# Copy the new theme file for zathura
 	cp $HOME/.cache/wal/zathurarc $HOME/.config/zathura/
-
-	# Notify the user
-	wallpaper_name=$(basename "$file" | cut -d. -f1)
-	notify-send -i "${file}" "Wallpaper-switcher" "Switching to ${wallpaper_name}"
 }
 
 # Show the images
