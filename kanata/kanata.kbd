@@ -1,40 +1,29 @@
 ;; Global settings
-;; Enable processing of unmapped keys for normal typing.
 (defcfg
   process-unmapped-keys yes
 )
 
 ;; Source keys
-;; List keys in French AZERTY order: 's', 'd', 'f', 'h', 'j', 'k', 'l', 'spc'.
 (defsrc
   s d f h j k l spc
 )
 
 ;; Timing variables
-;; Set tap (200ms) and hold (250ms) timeouts for tap-hold behavior.
 (defvar
-  tap-time 200
-  hold-time 250
+  tap-time 150
+  hold-time 200
 )
 
 ;; Key aliases
 ;; Define tap-hold behaviors: tap for letter, hold for modifier or layer.
-;; 's': Tap 's', hold for left Alt.
-;; 'd': Tap 'd', hold for left Shift.
-;; 'f': Tap 'f', hold for left Ctrl.
-;; 'h': Tap 'h', hold for left Ctrl.
-;; 'j': Tap 'j', hold for left Shift.
-;; 'k': Tap 'k', hold for left Alt.
-;; 'l': Tap 'l', hold for right Alt.
-;; 'spc': Tap space, hold to toggle vim-nav layer.
 (defalias
   s (tap-hold $tap-time $hold-time s lalt)
   d (tap-hold $tap-time $hold-time d lsft)
   f (tap-hold $tap-time $hold-time f lctl)
-  h (tap-hold $tap-time $hold-time h _)  ;; Tap 'h', hold for Ctrl, NOTE: Eventually move the '_' to 'lctl' if something doesn't work
-  j (tap-hold $tap-time $hold-time j lctl)  ;; Tap 'j', hold for Shift
-  k (tap-hold $tap-time $hold-time k lsft)  ;; Tap 'k', hold for Alt
-  l (tap-hold $tap-time $hold-time l lalt)  ;; Tap 'l', hold for right Alt
+  h (tap-hold $tap-time $hold-time h _)  NOTE: Eventually move the '_' to 'lctl' if something doesn't work
+  j (tap-hold $tap-time $hold-time j lctl)
+  k (tap-hold $tap-time $hold-time k lsft)
+  l (tap-hold $tap-time $hold-time l lalt)
   spc (tap-hold $tap-time $hold-time spc (layer-toggle vim-nav))
   left  left   ;; Left arrow for vim-nav
   down  down   ;; Down arrow for vim-nav
@@ -43,13 +32,11 @@
 )
 
 ;; Base layer
-;; Default layer mapping keys to aliases in defsrc order.
 (deflayer base
   @s @d @f @h @j @k @l @spc
 )
 
 ;; Vim-nav layer
-;; Layer activated by holding 'spc', maps 'h', 'j', 'k', 'l' to arrows.
 (deflayer vim-nav
   _ _ _ @left @down @up @right _
 )
