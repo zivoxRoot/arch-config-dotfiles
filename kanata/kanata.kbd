@@ -5,25 +5,27 @@
 
 ;; Source keys
 (defsrc
-  s d f h j k l spc
+  q s d f h j k l m spc
 )
 
 ;; Timing variables
 (defvar
-  tap-time 150
-  hold-time 200
+  tap-time 120
+  hold-time 180
 )
 
 ;; Key aliases
 ;; Define tap-hold behaviors: tap for letter, hold for modifier or layer.
 (defalias
+  q (tap-hold $tap-time $hold-time q lmet)
   s (tap-hold $tap-time $hold-time s lalt)
   d (tap-hold $tap-time $hold-time d lsft)
   f (tap-hold $tap-time $hold-time f lctl)
-  h (tap-hold $tap-time $hold-time h _)  NOTE: Eventually move the '_' to 'lctl' if something doesn't work
+  h (tap-hold $tap-time $hold-time h _)  ;; NOTE: Eventually move the '_' to 'lctl' if something doesn't work
   j (tap-hold $tap-time $hold-time j lctl)
   k (tap-hold $tap-time $hold-time k lsft)
   l (tap-hold $tap-time $hold-time l lalt)
+  m (tap-hold $tap-time $hold-time m lmet)
   spc (tap-hold $tap-time $hold-time spc (layer-toggle vim-nav))
   left  left   ;; Left arrow for vim-nav
   down  down   ;; Down arrow for vim-nav
@@ -33,10 +35,10 @@
 
 ;; Base layer
 (deflayer base
-  @s @d @f @h @j @k @l @spc
+  @q @s @d @f @h @j @k @l @m @spc
 )
 
 ;; Vim-nav layer
 (deflayer vim-nav
-  _ _ _ @left @down @up @right _
+  _ _ _ _ @left @down @up @right _ _
 )
