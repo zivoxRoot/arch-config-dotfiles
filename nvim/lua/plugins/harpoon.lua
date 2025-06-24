@@ -37,6 +37,9 @@ return {
 		vim.keymap.set("n", "<Leader>4", function()
 			require("harpoon.ui").nav_file(4)
 		end, opts)
+		vim.keymap.set("n", "<Leader>5", function()
+			require("harpoon.ui").nav_file(5)
+		end, opts)
 
 	end,
 }
