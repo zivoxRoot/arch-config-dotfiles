@@ -2,25 +2,14 @@
 	// General
 	"position": "top",
 	"layer": "top",
-	"modules-left": [ "clock" ],
+	"modules-left": [ "clock", "custom/notification", "custom/kb_layout" ],
 	"modules-center": [ "hyprland/workspaces" ],
-	"modules-right": [ "custom/notification", "custom/kb_layout", "group/net", "group/luminosity", "wireplumber", "battery" ],
+	"modules-right": [ "group/net", "group/luminosity", "wireplumber", "battery" ],
 
 	// Clock
 	"clock": {
 		"format": "{:%R}",
 		"tooltip-format": "{:%A %d %Y - %R}"
-	},
-
-	// Workspaces
-	"hyprland/workspaces": {
-		"format": "{icon}",
-		"on-click": "activate",
-		"format-icons": {
-			"urgent": " ",
-			"active": " ",
-			"default": " ",
-		},
 	},
 
 	// Notification
@@ -50,6 +39,17 @@
 		"exec": "~/.config/hypr/scripts/keyboard_layout.sh",
 		"interval": 1,
 		"on-click": "~/.config/hypr/scripts/switch_layout.sh"
+	},
+
+	// Workspaces
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"on-click": "activate",
+		"format-icons": {
+			"urgent": " ",
+			"active": " ",
+			"default": " ",
+		},
 	},
 
 	// Group net

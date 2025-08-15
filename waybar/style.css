@@ -45,6 +45,24 @@ tooltip label {
 	background: @color4;
 }
 
+/* Notifications */
+#custom-notification {
+	margin-right: 5px;
+	margin-left: 5px;
+	padding-right: 18px;
+	padding-left: 18px;
+	background-color: @background;
+}
+
+/* Keyboard layout */
+#custom-kb_layout {
+	margin-right: 5px;
+	margin-left: 5px;
+	padding-right: 18px;
+	padding-left: 18px;
+	background-color: @background;
+}
+
 /* workspaces */
 #workspaces {
 	padding-right: 5px;
@@ -70,24 +88,6 @@ tooltip label {
 #workspaces button:hover {
 	background: @color5;
 	border: none;
-}
-
-/* Notifications */
-#custom-notification {
-	margin-right: 5px;
-	margin-left: 5px;
-	padding-right: 18px;
-	padding-left: 18px;
-	background-color: @background;
-}
-
-/* Keyboard layout */
-#custom-kb_layout {
-	margin-right: 5px;
-	margin-left: 5px;
-	padding-right: 18px;
-	padding-left: 18px;
-	background-color: @background;
 }
 
 /* Group-network*/
