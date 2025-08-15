@@ -42,11 +42,19 @@
   "workbench.colorTheme": "Wal",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "window.commandCenter": false,
-  "animations.Enabled": true,
   "editor.lineHeight": 26,
   "breadcrumbs.enabled": false,
   "window.menuBarVisibility": "compact",
   "chat.commandCenter.enabled": false,
-  "editor.minimap.enabled": true,
-  "markdown.preview.fontFamily": "'CaskaydiaCove Nerd Font Mono', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif"
+  "markdown.preview.fontFamily": "'CaskaydiaCove Nerd Font Mono', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "explorer.fileNesting.enabled": true,
+  "editor.suggest.insertMode": "replace",
+  "keyboard.dispatch": "keyCode",
+  "zenMode.hideLineNumbers": false,
+  "editor.minimap.enabled": false,
+
+  // Vim settings (require Vim extension)
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true
 }
