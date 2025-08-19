@@ -13,6 +13,11 @@ BEZIER="0.4,0.2,0.4,1.0"
 TRANSITION_POS="0.7,0.7"
 SWWW_PARAMS="--transition-fps ${FPS} --transition-type ${TYPE} --transition-duration ${DURATION} --transition-bezier ${BEZIER} --transition-pos ${TRANSITION_POS}"
 
+# Additional config
+THEME_FILE="$HOME/.cache/hyprland-theme"
+DEFAULT_THEME="dark"
+CURRENT_THEME=""
+
 # Rofi arguments
 rofiArgs="rofi -show -dmenu -theme $rofiThemeFile"
 
@@ -100,7 +105,13 @@ applyWallpaper() {
     fi
 
     # Set the pywal16 theme
-    wal -i "${1}" -n --cols16
+    if [ "$CURRENT_THEME" = "light" ]; then
+        wal -i "${1}" -l -n --cols16
+        echo "LIGHT MODE"
+    else
+        wal -i "${1}" -n --cols16
+        echo "DARK MODE"
+    fi
 
     # Notify the user
     wallpaper_name=$(basename "$1" | cut -d. -f1)
@@ -216,6 +227,11 @@ main() {
 
     launchSelector
 }
+
+# Ensure the theme file exists
+[ ! -f "$THEME_FILE" ] && echo "$DEFAULT_THEME" > "$THEME_FILE"
+# Read the current theme
+CURRENT_THEME=$(cat "$THEME_FILE")
 
 # Check the necessary folders exist, and create them if they do not
 if [ ! -d "$wallpapersDir" ]; then
