@@ -72,3 +72,5 @@ export PATH="$INSTALL_DIR:$PATH"
 
 # Use neovim as manpager
 export MANPAGER="nvim +Man!"
+
+. "$HOME/.local/bin/env"
