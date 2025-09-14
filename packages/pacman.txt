@@ -48,6 +48,9 @@ upower
 waybar
 wireless_tools
 wl-clipboard
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+xdg-desktop-portal-gtk
 yazi
 zathura
 zathura-pdf-poppler

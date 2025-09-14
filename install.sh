@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ACCENT='\033[32m'
+ACCENT='\033[35m'
 DEFAULT='\033[0m'
 
 # Get user validation
@@ -32,8 +32,6 @@ echo -e "└──────────────────────�
 
 CONFIG_DIR=$(pwd)
 echo $CONFIG_DIR
-echo "Installing git..."
-sudo pacman -S git
 
 # Install base packages
 echo -e "\n\n${ACCENT}┌─────────────────────────"
@@ -41,7 +39,7 @@ echo -e "│ 1. INSTALLING BASE PACKAGES"
 echo -e "└─────────────────────────${DEFAULT}\n"
 
 cd $CONFIG_DIR/packages
-sudo pacman -S --needed -noconfirm - < pacman.txt
+sudo pacman -S --needed --noconfirm - < pacman.txt
 
 # Installing paru
 echo -e "\n\n${ACCENT}┌─────────────────────────"
@@ -69,7 +67,7 @@ cd $CONFIG_DIR
 
 echo "Copying wallpapers..."
 mkdir -p ~/Pictures
-cp -r wallpapers ~/Pictures/Wallpapers
+cp -r Wallpapers ~/Pictures/
 
 echo "Copying wal..."
 cp -r wal ~/.config/
@@ -78,7 +76,7 @@ echo "Copying hypr..."
 rm ~/.config/hypr/* && cp -r hypr/* ~/.config/hypr
 
 echo "Copying kitty..."
-cp -r hypr ~/.config/
+cp -r kitty ~/.config/
 
 echo "Copying waybar..."
 cp -r waybar ~/.config/
@@ -109,6 +107,12 @@ cp -r zsh ~/.config/
 
 echo "Copying tmux..."
 cp -r tmux ~/.config/
+
+echo "Copying zshrc..."
+cp .zshrc ~
+
+echo "Copying gitconfig..."
+cp .gitconfig ~
 
 echo "Copying VSCodium configuration..."
 mkdir -p ~/.config/VSCodium/User/
