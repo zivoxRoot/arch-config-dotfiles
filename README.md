@@ -1,24 +1,13 @@
-# Arch config dotfiles
+# Arch linux X hyprland
 
 ## Installation
 
-You can install these dotfiles following one of the two methodes
+It is recommended to install these dotfiles on a fresh arch linux installation. The installation script might delete some of your personal configurations if you used the installation before.
 
-### 1. Installation script
-
-To use the script, follow these steps:
+> You will need `git` installed (`sudo pacman -S git`)
 
 ```bash
-git clone https://github.com/zivoxRoot/arch-config-dotfiles.git ~/arch-config-dotfiles
-cd ~/arch-config-dotfiles
+git clone https://github.com/zivoxRoot/arch-config-dotfiles.git
+cd arch-config-dotfiles
 ./install.sh
 ```
-
-> **Notes** : This may open a VSCodium instance, just wait for the script to finish then close it
-> Follow the instructions, if prompted to remove a package, say "yes" (y)
-
-### 2. Follow the installation steps yourself
-
-The steps to install the packages and copy the config files are in **./INSTALLATION.md**
-
-###
