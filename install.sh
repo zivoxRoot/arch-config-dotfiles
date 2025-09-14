@@ -1,232 +1,88 @@
-#!/usr/bin/env bash
+# This is the new installation script for my dotfiles!! Should work!
 
-# Exit on any error and enable debug tracing
-set -e
+echo "# 0. Preparing system"
+CONFIG_DIR=$(pwd)
+echo $CONFIG_DIR
+echo "Installing git..."
+sudo pacman -S git
 
-# Define variables with fallbacks
-HOME_DIR="${HOME_DIR:-$HOME}"
-CONFIG_DIR="${CONFIG_DIR:-${HOME}/.config}"
-BASE_DIR="$(pwd)"
-PACKAGE_DIR="${BASE_DIR}/packages"
-PACMAN_LIST="${PACKAGE_DIR}/pacman.txt"
-AUR_LIST="${PACKAGE_DIR}/aur.txt"
-WALLPAPERS_SRC="${BASE_DIR}/wallpapers"
-WALLPAPERS_DEST="${HOME_DIR}/Pictures/Wallpapers"
-WAL_SRC="${BASE_DIR}/wal"
-WAL_DEST="${CONFIG_DIR}/wal"
-HYPR_SRC="${BASE_DIR}/hypr"
-HYPR_DEST="${CONFIG_DIR}/hypr"
+# Install base packages
+echo "# 1. INSTALLING BASE PACKAGES"
+cd $CONFIG_DIR/packages
+sudo pacman -S --needed -noconfirm - < pacman.txt
 
-# Function to log messages with timestamps
-log_message() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >&2
-}
+# Installing paru
+echo "# 2. INSTALLING PARU"
+git clone https://aur.archlinux.org/paru-bin.git
+cd paru-bin
+makepkg -rsi --noconfirm
 
-# Function to check if a command exists
-check_command() {
-    if ! command -v "$1" &>/dev/null; then
-        log_message "Error: Command '$1' not found."
-        exit 1
-    fi
-}
+# Installing AUR packages
+echo "\n\n# 3. INSTALLING AUR PACKAGES"
+cd $CONFIG_DIR/packages
+paru -S - < aur.txt
 
-# Function to check if a file or directory exists
-check_path() {
-    local path="$1"
-    if [[ ! -e "$path" ]]; then
-        log_message "Error: '$path' does not exist."
-        exit 1
-    fi
-}
+# Copying the configuration
+echo "# 4. COPYING THE CONFIGURATION"
+cd $CONFIG_DIR
 
-# Function to create a directory with error handling
-create_dir() {
-    local dir="$1"
-    if [[ ! -d "$dir" ]]; then
-        log_message "Creating directory '$dir'..."
-        if ! mkdir -p "$dir"; then
-            log_message "Error: Failed to create directory '$dir'."
-            exit 1
-        fi
-    fi
-}
+echo "Copying wallpapers..."
+mkdir -p ~/Pictures
+cp -r wallpapers ~/Pictures/Wallpapers
 
-# Function to copy a directory with error handling
-copy_dir() {
-    local src="$1"
-    local dest="$2"
-    local name="$3"
+echo "Copying wal..."
+cp -r wal ~/.config/
 
-    check_path "$src"
-    create_dir "$(dirname "$dest")"
+echo "Copying hypr..."
+rm ~/.config/hypr/* && cp -r hypr/* ~/.config/hypr
 
-    log_message "Copying '$name' from '$src' to '$dest'..."
-    if ! cp -r "$src" "$dest" 2>/dev/null; then
-        log_message "Error: Failed to copy '$name'."
-        exit 1
-    fi
-    log_message "Successfully copied '$name'."
-}
+echo "Copying kitty..."
+cp -r hypr ~/.config/
 
-# Function to execute a command with logging
-execute_command() {
-    log_message "Executing: $1"
-    if ! eval "$1"; then
-        log_message "Error: Command failed: $1"
-        exit 1
-    fi
-}
+echo "Copying waybar..."
+cp -r waybar ~/.config/
 
-# Greet the user and prompt for confirmation
-log_message "Hello! Welcome to the installation script!"
-read -p "Do you want to continue? (Y/n): " answer
-case "${answer:-y}" in
-[Yy] | [Yy][Ee][Ss])
-    log_message "Proceeding with installation..."
-    ;;
-*)
-    log_message "Aborting the installation."
-    exit 0
-    ;;
-esac
+echo "Copying bat..."
+cp -r bat ~/.config/
 
-# Update the system
-execute_command "sudo pacman -Syu --noconfirm"
+echo "Copying fastfetch..."
+cp -r fastfetch ~/.config/
 
-# Install official packages
-check_path "$PACMAN_LIST"
-cd "$PACKAGE_DIR" || {
-    log_message "Error: Cannot change to $PACKAGE_DIR."
-    exit 1
-}
-execute_command "sudo pacman -S --needed --noconfirm - < $PACMAN_LIST"
+echo "Copying swaync..."
+cp -r swaync ~/.config/
 
-# Install paru AUR helper if not present
-if ! command -v paru &>/dev/null; then
-    log_message "Installing paru AUR helper..."
-    execute_command "sudo pacman -S --needed --noconfirm base-devel"
-    cd ~ || {
-        log_message "Error: Cannot change to home directory."
-        exit 1
-    }
-    execute_command "git clone https://aur.archlinux.org/paru-bin.git"
-    cd ~/paru-bin/ || {
-        log_message "Error: Cannot change to ~/paru-bin/."
-        exit 1
-    }
-    execute_command "makepkg -rsi --noconfirm"
-    cd ~ || {
-        log_message "Error: Cannot change to home directory."
-        exit 1
-    }
-    execute_command "rm -Rf ~/paru-bin/"
-else
-    log_message "Detected paru as AUR helper."
-fi
+echo "Copying rofi..."
+cp -r rofi ~/.config/
 
-# Install AUR packages
-check_path "$AUR_LIST"
-cd "$PACKAGE_DIR" || {
-    log_message "Error: Cannot change to $PACKAGE_DIR."
-    exit 1
-}
-execute_command "paru -S --needed - < $AUR_LIST"
+echo "Copying nvim..."
+cp -r nvim ~/.config/
 
-# Return to base directory
-cd "$BASE_DIR" || {
-    log_message "Error: Cannot change to $BASE_DIR."
-    exit 1
-}
+echo "Copying wlogout..."
+cp -r wlogout ~/.config/
 
-# Copy wallpapers
-copy_dir "$WALLPAPERS_SRC" "$WALLPAPERS_DEST" "Wallpapers"
+echo "Copying ohmyposh..."
+cp -r ohmyposh ~/.config/
 
-# Copy wal
-copy_dir "$WAL_SRC" "$WAL_DEST" "wal"
+echo "Copying zsh..."
+cp -r zsh ~/.config/
 
-# Start swww daemon and set first wallpaper
-# log_message "Starting swww daemon and setting wallpaper..."
-# pkill swww || true
-# swww-daemon &
-# sleep 1
+echo "Copying tmux..."
+cp -r tmux ~/.config/
 
-# first_wallpaper=$(find "$WALLPAPERS_DEST" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" \) | sort | head -n 1)
-first_wallpaper=$(find "$WALLPAPERS_DEST" -maxdepth 1 -type f \( -iname "*.jpg" \) | sort | head -n 1)
-if [[ -n "$first_wallpaper" ]]; then
-    log_message "Setting wallpaper: ${first_wallpaper##*/}"
-    swww img "$first_wallpaper"
-    wal -i "$first_wallpaper" -n --cols16
-else
-    log_message "No images found in $WALLPAPERS_DEST."
-fi
+echo "Copying VSCodium configuration..."
+mkdir -p ~/.config/VSCodium/User/
+cp vscodium/keybindings.json ~/.config/VSCodium/User
+cp vscodium/settings.json ~/.config/VSCodium/User
+echo "Installing VSCodium extensions..."
+xargs -n 1 codium --install-extension < vscodium/extensions.txt
 
-# Delete the original hypr folder and copy the new one
-rm -r "$HYPR_DEST" && copy_dir "$HYPR_SRC" "$HYPR_DEST" "hypr"
+# Last configuration
+echo "# 5. LAST CONFIGURATIONS"
+echo "Changing user shell to zsh..."
+chsh -s /bin/zsh
 
-# Copy kitty
-copy_dir "${BASE_DIR}/kitty" "${CONFIG_DIR}" "kitty"
-
-# Copy waybar
-copy_dir "${BASE_DIR}/waybar" "${CONFIG_DIR}" "waybar"
-
-# Copy bat
-copy_dir "${BASE_DIR}/bat" "${CONFIG_DIR}" "bat"
-
-# Copy fastfetch
-copy_dir "${BASE_DIR}/fastfetch" "${CONFIG_DIR}" "fastfetch"
-
-# Copy swaync
-copy_dir "${BASE_DIR}/swaync" "${CONFIG_DIR}" "swaync"
-
-# Copy rofi
-copy_dir "${BASE_DIR}/rofi" "${CONFIG_DIR}" "rofi"
-
-# Copy nvim
-copy_dir "${BASE_DIR}/nvim" "${CONFIG_DIR}" "nvim"
-
-# Copy wlogout
-copy_dir "${BASE_DIR}/wlogout" "${CONFIG_DIR}" "wlogout"
-
-# Copy ohmyposh
-copy_dir "${BASE_DIR}/ohmyposh" "${CONFIG_DIR}" "ohmyposh"
-
-# Copy zsh
-copy_dir "${BASE_DIR}/zsh" "${CONFIG_DIR}" "zsh"
-
-# Copy zshrc
-copy_dir "${BASE_DIR}/.zshrc" "${HOME_DIR}" ".zshrc"
-
-# Change shell to zsh
-# Check the current shell before that
-current_shell=$(getent passwd "$USER" | cut -d: -f7)
-if [ "$current_shell" != "/bin/zsh" ]; then
-    chsh -s /bin/zsh
-    log_message "Shell changed to /bin/zsh. Please log out and log back in for the change to take effect."
-else
-    log_message "Current shell is already /bin/zsh. No action taken."
-fi
-
-# Copy tmux
-copy_dir "${BASE_DIR}/tmux" "${CONFIG_DIR}" "tmux"
-
-# Copy VS Codium files
-copy_dir "${BASE_DIR}/vscodium/settings.json" "${CONFIG_DIR}/VSCodium/User/" "settings.json"
-copy_dir "${BASE_DIR}/vscodium/keybindings.json" "${CONFIG_DIR}/VSCodium/User/" "keybindings.json"
-
-# Launch VSCodium and store its PID
-codium &>/dev/null &
-VSCODIUM_PID=$!
-sleep 3
-
-# Install VS Codium extensions
-xargs -n 1 codium --install-extension <"${BASE_DIR}/vscodium/extensions.txt"
-
-# Close the VSCodium instance
-log_message "Closing VSCodium instance..."
-kill "$VSCODIUM_PID" 2>/dev/null &
-
-# Enable bluetooth service
+echo "Enbling bluetooth..."
 sudo systemctl enable bluetooth.service
 
-log_message "Installation and configuration process completed successfully."
-log_message "Please reboot your machine with 'sudo reboot now'"
+# Next recommended steps
+echo "# 6. NEXT STEPS"
