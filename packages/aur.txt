@@ -1,7 +1,6 @@
 bibata-cursor-theme-bin
 hyprland-protocols-git
 hyprshot-git
-hyprwayland-scanner-git
 no-more-secrets-git
 oh-my-posh-bin
 python-pywal16
