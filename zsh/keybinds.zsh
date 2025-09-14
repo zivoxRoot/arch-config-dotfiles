@@ -47,7 +47,7 @@ alias gm="git merge"
 alias gcl"git clone"
 
 # Others
-alias c="code"
+alias c="codium ."
 alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
 alias lg="lazygit"
 alias bat="bat --theme base16"
@@ -60,7 +60,6 @@ alias mv="mv -i"
 alias cp="cp -ri"
 alias z="zathura"
 alias q="exit"
-alias G="| grep"
 
 # Yazi shell wrapper to 'cd' in a directory when quitting yazi with 'q'
 function y() {
