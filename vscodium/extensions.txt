@@ -1,13 +1,9 @@
 albert.tabout
 alefragnani.bookmarks
-britesnow.vscode-toggle-quotes
-cardinal90.multi-cursor-case-preserve
 christian-kohler.path-intellisense
 dlasagno.wal-theme
-edgardmessias.clipboard-manager
 esbenp.prettier-vscode
 exodiusstudios.comment-anchors
-foam.foam-vscode
 formulahendry.auto-close-tag
 kamikillerto.vscode-colorize
 mhutchie.git-graph
