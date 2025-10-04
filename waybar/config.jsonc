@@ -2,7 +2,7 @@
   // General
   "position": "top",
   "layer": "top",
-  "modules-left": ["clock", "custom/notification", "custom/kb_layout"],
+  "modules-left": ["clock", "custom/notification", "custom/kb_layout", "custom/power_profile"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": ["group/net", "group/luminosity", "wireplumber", "battery"],
 
@@ -39,6 +39,13 @@
     "exec": "~/.config/hypr/scripts/keyboard_layout.sh",
     "interval": 1,
     "on-click": "~/.config/hypr/scripts/switch_layout.sh"
+  },
+
+  // Power profile
+  "custom/power_profile": {
+    "exec": "~/.config/waybar/get-powerprofile.sh",
+    "interval": 1,
+    "on-click": "~/.config/rofi/widgets/power-profile.sh"
   },
 
   // Workspaces

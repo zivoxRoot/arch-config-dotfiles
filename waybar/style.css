@@ -63,6 +63,15 @@ tooltip label {
   background-color: @background;
 }
 
+/* Power profile */
+#custom-power_profile {
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 18px;
+  padding-left: 18px;
+  background-color: @background;
+}
+
 /* workspaces */
 #workspaces {
   padding-right: 5px;
