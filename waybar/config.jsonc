@@ -76,7 +76,8 @@
     "tooltip-format-wifi": "   {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
     "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
-    "on-click": "nm-connection-editor"
+    // "on-click": "nm-connection-editor"
+    "on-click": "~/.config/hypr/scripts/launch_impala.sh"
   },
 
   // Bluetooth
