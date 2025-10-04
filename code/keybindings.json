@@ -104,19 +104,23 @@
   // Navigation
   {
     "key": "shift+L",
-    "command": "workbench.action.navigateRight"
+    "command": "workbench.action.navigateRight",
+    "when": "vim.mode == 'Normal'"
   },
   {
     "key": "shift+H",
-    "command": "workbench.action.navigateLeft"
+    "command": "workbench.action.navigateLeft",
+    "when": "vim.mode == 'Normal'"
   },
   {
     "key": "shift+K",
-    "command": "workbench.action.navigateUp"
+    "command": "workbench.action.navigateUp",
+    "when": "vim.mode == 'Normal'"
   },
   {
     "key": "shift+J",
-    "command": "workbench.action.navigateDown"
+    "command": "workbench.action.navigateDown",
+    "when": "vim.mode == 'Normal'"
   },
 
   // Navigate with tab
