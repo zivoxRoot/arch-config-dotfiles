@@ -36,16 +36,16 @@
 
   // Keyboard layout
   "custom/kb_layout": {
-    "exec": "~/.config/hypr/scripts/keyboard_layout.sh",
+    "exec": "archemy-get-keyboard-layout",
     "interval": 1,
-    "on-click": "~/.config/hypr/scripts/switch_layout.sh"
+    "on-click": "archemy-manage-layout"
   },
 
   // Power profile
   "custom/power_profile": {
-    "exec": "~/.config/waybar/get-powerprofile.sh",
+    "exec": "archemy-get-powerprofile",
     "interval": 1,
-    "on-click": "~/.config/rofi/widgets/power-profile.sh"
+    "on-click": "archemy-launch-power-profile"
   },
 
   // Workspaces
@@ -76,8 +76,7 @@
     "tooltip-format-wifi": "   {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
     "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
-    // "on-click": "nm-connection-editor"
-    "on-click": "~/.config/hypr/scripts/launch_impala.sh"
+    "on-click": "archemy-launch-impala"
   },
 
   // Bluetooth
@@ -91,8 +90,7 @@
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    // "on-click": "blueman-manager"
-    "on-click": "~/.config/hypr/scripts/launch_bluetui.sh"
+    "on-click": "archemy-launch-bluetui"
   },
 
   // Group luminosity
@@ -113,7 +111,7 @@
   // Hyprsunset
   "custom/hyprsunset": {
     "format": "{}",
-    "exec": "~/.config/waybar/check-hyprsunset.sh",
+    "exec": "archemy-get-hyprsunset",
     "interval": 1, // Update every seconds
     "tooltip": true,
     "tooltip-format": "Dim protection"
@@ -122,7 +120,7 @@
   // Hyprland theme
   "custom/hyprland-theme": {
     "format": "{}",
-    "exec": "~/.config/waybar/check-theme.sh",
+    "exec": "archemy-get-theme",
     "interval": 1, // Update every seconds
     "tooltip": true,
     "tooltip-format": "Dark/Light mode"

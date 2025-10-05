@@ -14,6 +14,7 @@ if [ -n "$selected" ]; then
         notify-send "Clipboard" "History cleared"
     elif [ "$selected" = "$OPEN_MENU_OPTION" ]; then
         # Open the main clipboard menu
-		rofi -modi clipboard:$HOME/.config/rofi/widgets/clipboard-menu/clipboard-menu.sh -show clipboard -show-icons -theme $HOME/.config/rofi/widgets/clipboard-menu/clipboard-menu.rasi
+	#	rofi -modi clipboard:$HOME/.config/rofi/widgets/clipboard-menu/clipboard-menu.sh -show clipboard -show-icons -theme $HOME/.config/rofi/widgets/clipboard-menu/clipboard-menu.rasi
+	archemy-launch-rofi-clipboard-history
     fi
 fi

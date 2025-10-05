@@ -22,6 +22,10 @@ makepkg -rsi --noconfirm
 
 ## Copy the configuration
 
+### Scripts
+
+- Copy all scripts in **./scripts/** into **/usr/local/bin**
+
 ### Wallpapers
 
 - Copy **Wallpapers** into **~/Pictures/Wallpapers**

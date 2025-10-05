@@ -60,6 +60,10 @@ echo -e "└──────────────────────�
 
 cd $CONFIG_DIR
 
+echo "Copying scripts..."
+sudo mkdir -p /usr/local/bin/
+sudo cp scripts/* /usr/local/bin/
+
 echo "Copying wallpapers..."
 mkdir -p ~/Pictures
 cp -r Wallpapers ~/Pictures/
