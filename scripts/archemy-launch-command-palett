@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+function main_prompt() {
+	choices="Packages\n"
+
+	selection=$(echo -e "$choices" | rofi -dmenu -i -theme $HOME/.config/rofi/launcher/current_theme/theme.rasi)
+
+	case "$selection" in
+		"Packages")
+			package_prompt
+			;;
+	esac
+}
+
+function package_prompt() {
+	choices="Install package\nInstall AUR package\nRemove package\nUpdate packages"
+
+	selection=$(echo -e "$choices" | rofi -dmenu -i -theme $HOME/.config/rofi/launcher/current_theme/theme.rasi)
+
+	case "$selection" in
+		"Install package")
+			kitty --title="TUI app" -e archemy-pkg-install
+			;;
+		"Install AUR package")
+			kitty --title="TUI app" -e archemy-pkg-aur-install
+			;;
+		"Remove package")
+			kitty --title="TUI app" -e archemy-pkg-remove
+			;;
+		"Update packages")
+			kitty --title="TUI app" -e archemy-pkg-update
+			;;
+	esac
+}
+
+main_prompt

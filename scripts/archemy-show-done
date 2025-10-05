@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo -ne "Done ! Press any key to close..." && bash -c 'read -n 1 -s'
