@@ -67,6 +67,9 @@ echo "Copying wallpapers..."
 mkdir -p ~/Pictures
 cp -r Wallpapers ~/Pictures/
 
+# COPYING EVERITHING THAT GOES IN .config
+cd $CONFIG_DIR
+
 echo "Copying zshrc..."
 cp .zshrc ~
 echo "Changing user shell to zsh..."
@@ -77,9 +80,6 @@ cp .gitconfig ~
 
 echo "Copying the NEXT STEPS file..."
 cp NEXT_STEPS.md ~
-
-# COPYING EVERITHING THAT GOES IN .config
-cd $CONFIG_DIR
 
 echo "Copying wal..."
 cp -r wal ~/.config/
