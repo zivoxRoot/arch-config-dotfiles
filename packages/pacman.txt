@@ -2,7 +2,6 @@ acpi
 base
 bat
 bc
-blueman
 bluez-utils
 brightnessctl
 cliphist
@@ -12,7 +11,6 @@ fastfetch
 fzf
 glow
 git-delta
-grub
 htop
 hypridle
 hyprland
@@ -27,19 +25,14 @@ man-db
 mpv
 nautilus
 networkmanager
-network-manager-applet
-nm-connection-editor
 neovim
-obsidian
 onefetch
 rofi-wayland
 satty
-sddm
 swaync
 swww
 tealdeer
 telegram-desktop
-timeshift
 tmux
 ttf-cascadia-code-nerd
 ttf-cascadia-mono-nerd
