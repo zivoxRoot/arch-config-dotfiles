@@ -61,16 +61,10 @@ eval "$(zoxide init --cmd cd zsh)"
 export POSH_CACHE="$HOME/.cache/oh-my-posh"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
-# Start tmux when opening terminal
+# Start tmux when opening terminal (comment these lines if you don't want to use tmux)
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
 
-# Print a pokemon when opening the terminal
-# krabby random --no-title
-export PATH="$INSTALL_DIR:$PATH"
-
 # Use neovim as manpager
 export MANPAGER="nvim +Man!"
-
-. "$HOME/.local/bin/env"
