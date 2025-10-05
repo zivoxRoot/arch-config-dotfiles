@@ -3,7 +3,8 @@
 ACCENT='\033[35m'
 SECONDARY='\033[33m'
 DEFAULT='\033[0m'
-CONFIG_DIR=$(pwd)
+REPO_DIR=$(pwd)
+CONFIG_DIR="$REPO_DIR"/config
 
 # Get user validation
 clear
@@ -33,7 +34,7 @@ echo -e "\n\n${ACCENT}┌──────────────────�
 echo -e "│ 1/5 INSTALLING BASE PACKAGES"
 echo -e "└─────────────────────────${DEFAULT}\n\n"
 
-cd $CONFIG_DIR/packages
+cd $REPO_DIR/packages
 sudo pacman -S --needed --noconfirm - < pacman.txt
 
 # Installing paru
@@ -50,15 +51,13 @@ echo -e "\n\n${ACCENT}┌──────────────────�
 echo -e "│ 3/5 INSTALLING AUR PACKAGES"
 echo -e "└─────────────────────────${DEFAULT}\n\n"
 
-cd $CONFIG_DIR/packages
+cd $REPO_DIR/packages
 paru -S - < aur.txt
 
 # Copying the configuration
 echo -e "\n\n${ACCENT}┌─────────────────────────"
 echo -e "│ 4/5 COPYING THE CONFIGURATION"
 echo -e "└─────────────────────────${DEFAULT}\n\n"
-
-cd $CONFIG_DIR
 
 echo "Copying scripts..."
 sudo mkdir -p /usr/local/bin/
@@ -67,6 +66,20 @@ sudo cp scripts/* /usr/local/bin/
 echo "Copying wallpapers..."
 mkdir -p ~/Pictures
 cp -r Wallpapers ~/Pictures/
+
+echo "Copying zshrc..."
+cp .zshrc ~
+echo "Changing user shell to zsh..."
+chsh -s /bin/zsh
+
+echo "Copying gitconfig..."
+cp .gitconfig ~
+
+echo "Copying the NEXT STEPS file..."
+cp NEXT_STEPS.md ~
+
+# COPYING EVERITHING THAT GOES IN .config
+cd $CONFIG_DIR
 
 echo "Copying wal..."
 cp -r wal ~/.config/
@@ -107,23 +120,12 @@ cp -r tmux ~/.config/
 echo "Copying zsh..."
 cp -r zsh ~/.config/
 
-echo "Copying zshrc..."
-cp .zshrc ~
-echo "Changing user shell to zsh..."
-chsh -s /bin/zsh
-
-echo "Copying gitconfig..."
-cp .gitconfig ~
-
-echo "Copying the NEXT STEPS file..."
-cp NEXT_STEPS.md ~
-
-echo "Copying VSCodium configuration..."
-mkdir -p ~/.config/VSCodium/User/
-cp vscodium/keybindings.json ~/.config/VSCodium/User
-cp vscodium/settings.json ~/.config/VSCodium/User
-echo "Installing VSCodium extensions..."
-xargs -n 1 codium --install-extension < vscodium/extensions.txt
+echo "Copying VSCode configuration..."
+mkdir -p ~/.config/Code/User/
+cp code/keybindings.json ~/.config/Code/User
+cp code/settings.json ~/.config/Code/User
+echo "Installing VSCode extensions..."
+xargs -n 1 code --install-extension < code/extensions.txt
 
 # Set a default wallpaper
 swww img ${HOME}/Pictures/Wallpapers/A_car_with_luggage_on_top_of_it.jpg

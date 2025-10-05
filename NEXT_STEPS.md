@@ -17,5 +17,6 @@
    ssh-add ~/.ssh/id_ed25519
    bat ~/.ssh/id_ed25519
    ```
+5. Delete this file and the repository folder
 
 **Enjoy your new system! :)**
