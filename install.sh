@@ -63,11 +63,15 @@ echo "Copying scripts..."
 sudo mkdir -p /usr/local/bin/
 sudo cp scripts/* /usr/local/bin/
 
+echo "Copying desktop files..."
+sudo mkdir -p ~/.local/share/applications/
+sudo cp desktop-files/* ~/.local/share/applications/
+
 echo "Copying wallpapers..."
 mkdir -p ~/Pictures
 cp -r Wallpapers ~/Pictures/
 
-# COPYING EVERITHING THAT GOES IN .config
+# COPYING EVERYTHING THAT GOES IN .config
 cd $CONFIG_DIR
 
 echo "Copying zshrc..."

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Wifi
+Exec=archemy-launch-impala
+Icon=utilities-terminal  # Or a custom icon path
+Terminal=false
+Type=Application
+Categories=Utility;
+Comment=Launch TUI in centered window
