@@ -1,13 +1,25 @@
 #!/usr/bin/env bash
 
 function main_prompt() {
-	choices="Packages\n"
+	choices="App launcher\nThemes\nLauncher theme\nPackages\nSystem options"
 
 	selection=$(echo -e "$choices" | rofi -dmenu -i -theme $HOME/.config/rofi/launcher/current_theme/theme.rasi)
 
 	case "$selection" in
+		"App launcher")
+			archemy-launch-rofi-launcher
+			;;
+		"Themes")
+			archemy-launch-rofi-wallpaper
+			;;
+		"Launcher theme")
+			archemy-launch-rofi-select-launcher
+			;;
 		"Packages")
 			package_prompt
+			;;
+		"System options")
+			pkill wlogout || wlogout -b 6
 			;;
 	esac
 }
