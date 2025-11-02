@@ -1,24 +1,33 @@
 #!/usr/bin/env bash
 
 function main_prompt() {
-	choices="App launcher\nThemes\nLauncher theme\nPackages\nSystem options"
+	choices="App Launcher\nThemes Switcher\nLauncher Theme\nClipboard\nToggles\nClipboard Options\nPackages\nSystem Options"
 
 	selection=$(echo -e "$choices" | rofi -dmenu -i -theme $HOME/.config/rofi/launcher/current_theme/theme.rasi)
 
 	case "$selection" in
-		"App launcher")
+		"App Launcher")
 			archemy-launch-rofi-launcher
 			;;
-		"Themes")
+		"Themes Switcher")
 			archemy-launch-rofi-wallpaper
 			;;
-		"Launcher theme")
+		"Launcher Theme")
 			archemy-launch-rofi-select-launcher
+			;;
+		"Clipboard")
+			archemy-launch-rofi-clipboard-history
+			;;
+		"Toggles")
+			toggles_prompt
+			;;
+		"Clipboard Options")
+			archemy-launch-rofi-clipboard-actions
 			;;
 		"Packages")
 			package_prompt
 			;;
-		"System options")
+		"System Options")
 			pkill wlogout || wlogout -b 6
 			;;
 	esac
@@ -41,6 +50,24 @@ function package_prompt() {
 			;;
 		"Update packages")
 			kitty --title="TUI app" -e archemy-pkg-update
+			;;
+	esac
+}
+
+function toggles_prompt() {
+	choices="Night Lights\nDark/Light Theme\nKeyboard Layout\n"
+
+	selection=$(echo -e "$choices" | rofi -dmenu -i -theme $HOME/.config/rofi/launcher/current_theme/theme.rasi)
+
+	case "$selection" in
+		"Night Lights")
+			archemy-toggle-hyprsunset
+			;;
+		"Dark/Light Theme")
+			archemy-toggle-theme
+			;;
+		"Keyboard Layout")
+			archemy-manage-layout
 			;;
 	esac
 }
