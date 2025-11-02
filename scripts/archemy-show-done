@@ -1,3 +1,40 @@
 #!/usr/bin/env bash
 
-echo -ne "Done ! Press any key to close..." && bash -c 'read -n 1 -s'
+# OLD ONE
+# echo -ne "Done ! Press any key to close..." && bash -c 'read -n 1 -s'
+
+# NEW ONE
+# You can change the color and spinner characters here
+COLOR='\033[0;32m' # Green
+NC='\033[0m'       # No Color
+SPIN_CHARS="⠇⠏⠋⠙⠹⠸⠼⠴⠦⠧" # Braille spinner (looks smoother)
+# Alternative: SPIN_CHARS="-\|/"
+
+# Print the initial message
+# echo -ne "Done! Press any key to close... "
+
+# Hide the cursor for a cleaner look
+tput civis
+
+# Set up a trap: This command will run automatically when the script exits
+# (normally, or if you press Ctrl+C). It shows the cursor again.
+trap "tput cnorm; echo" EXIT
+
+i=0
+# Start the loop. It continues as long as 'read' does NOT succeed.
+while ! read -t 0.1 -n 1 -s; do
+     # 'read -t 0.1' waits 0.1s for a key. If no key, it times out.
+
+     # This line advances the spinner
+     # It uses modulo arithmetic to loop back to the start of SPIN_CHARS
+     i=$(( (i+1) % ${#SPIN_CHARS} ))
+
+     # Print the new spinner character
+     # \r (carriage return) moves the cursor to the start of the spinner
+     # without moving to a new line.
+     echo -ne "\nDone! Press any key to close... "
+     echo -ne "${COLOR}${SPIN_CHARS:$i:1}${NC}\r"
+done
+
+# When you press a key, 'read' succeeds, the loop breaks,
+# and the script finishes. The 'trap' command then runs to clean up.
