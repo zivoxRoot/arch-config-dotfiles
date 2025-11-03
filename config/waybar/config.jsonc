@@ -2,7 +2,7 @@
   // General
   "position": "top",
   "layer": "top",
-  "modules-left": ["clock", "custom/notification", "custom/kb_layout", "custom/power_profile"],
+  "modules-left": ["clock", "custom/notification", "custom/kb_layout", "custom/power_profile", "mpris"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": ["group/net", "group/luminosity", "wireplumber", "battery"],
 
@@ -42,10 +42,33 @@
   },
 
   // Power profile
-  "custom/power_profile": {
-    "exec": "archemy-get-powerprofile",
-    "interval": 1,
-    "on-click": "archemy-launch-power-profile"
+  // "custom/power_profile": {
+  //   "exec": "archemy-get-powerprofile",
+  //   "interval": 1,
+  //   "on-click": "archemy-launch-power-profile"
+  // },
+
+  // Music player
+  "mpris": {
+	  "format": "{player_icon} {artist} - {title}",
+	  "format-paused": " {artist} - {title}",
+	  "max-length": 35,
+	  "interval": 1,
+	  "player-icon": {
+		  "default": "",
+		  "spotify": "",
+		  "firefox": "",
+		  "mpv": ""
+	  },
+      "status-icons": {
+          "paused": "",
+          "playing": "▶",
+          "stopped": ""
+      },
+      "on-click": "playerctl play-pause",             // left-click = play/pause
+      "on-click-right": "playerctl next",             // right-click = next
+      "on-scroll-up": "playerctl previous",           // scroll = prev
+      "on-scroll-down": "playerctl position 10+"      // scroll-down = +10s
   },
 
   // Workspaces

@@ -64,11 +64,18 @@ tooltip label {
 }
 
 /* Power profile */
-#custom-power_profile {
-  margin-right: 5px;
-  margin-left: 5px;
-  padding-right: 18px;
-  padding-left: 18px;
+/* #custom-power_profile { */
+/*   margin-right: 5px; */
+/*   margin-left: 5px; */
+/*   padding-right: 18px; */
+/*   padding-left: 18px; */
+/*   background-color: @background; */
+/* } */
+
+/* Music player */
+#mpris {
+  padding-right: 14px;
+  padding-left: 14px;
   background-color: @background;
 }
 
