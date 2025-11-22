@@ -5,6 +5,7 @@ bc
 bluez-utils
 brightnessctl
 cliphist
+chromium
 ddcutil
 eza
 fastfetch
